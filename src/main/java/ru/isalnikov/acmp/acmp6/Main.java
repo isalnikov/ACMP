@@ -13,7 +13,6 @@ package ru.isalnikov.acmp.acmp6;
  *
  * @author Igor Salnikov <admin@isalnikov.com>
  */
-import ru.isalnikov.acmp.acmp5.*;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -22,6 +21,10 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
+
+        String ins = "C7-D5";
+        String ins1 = "E2-E4";
+        String ins3 = "BSN";
 
         try (Scanner in = new Scanner(System.in);
                 PrintWriter out = new PrintWriter(System.out)) {
@@ -40,15 +43,21 @@ public class Main {
     private static void solve(Scanner in, PrintWriter out) {
         String n = in.nextLine();
         Matcher m = desk.matcher(n);
-
-        if (!m.matches()) {
-            out.println(Result.ERROR);
-            return;
-        }
-       
         //a[i,j] -> a[i+2,j+1] || a[i+1,j+2]
-        
-        out.println(Result.YES);
+        if (m.matches()) {
+            if ((Math.abs(Character.getNumericValue(n.charAt(0)) - Character.getNumericValue(n.charAt(3))) == 2
+                    && Math.abs(Character.getNumericValue(n.charAt(1)) - Character.getNumericValue(n.charAt(4))) == 1)
+
+                    || (Math.abs(Character.getNumericValue(n.charAt(0)) - Character.getNumericValue(n.charAt(3))) == 1
+                    && Math.abs(Character.getNumericValue(n.charAt(1)) - Character.getNumericValue(n.charAt(4))) == 2)) {
+                out.println(Result.YES);
+            } else {
+                out.println(Result.NO);
+            }
+        } else {
+            out.println(Result.ERROR);
+        }
+
     }
 
 }
