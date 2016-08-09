@@ -36,11 +36,11 @@ public class Main {
                 .map(Integer::valueOf)
                 .toArray(Integer[]::new);
 
-        int minIndex = -1;
-        int maxIndex = -1;
+        int minIndex = 0;
+        int maxIndex = 0;
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+        int min = arr[0];
+        int max = arr[0];
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] < min) {
@@ -54,11 +54,25 @@ public class Main {
             }
 
         }
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (minIndex > maxIndex) {
+                int temp = minIndex;
+                minIndex = maxIndex;
+                maxIndex = temp;
+            }
+        }
+        
+        int mult = 1;
+        
+        for (int i = minIndex+1; i < maxIndex; i++) {
+            mult *= arr[i];
 
-       // int mult = 0;
+        }
+
+       
 
         int sum = Arrays.stream(arr).filter(it -> it > 0).mapToInt(i -> i).sum();
-        int mult = Arrays.stream(arr).skip(minIndex).limit(maxIndex - minIndex).reduce(1, Math::multiplyExact);
 
         out.print(sum + " " + mult);
 
