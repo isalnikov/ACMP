@@ -8,6 +8,7 @@ package ru.isalnikov.acmp.acmp11;
 import java.io.ByteArrayInputStream;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import ru.isalnikov.acmp.base.BaseTest;
 
 /**
@@ -55,6 +56,7 @@ public class MainTest extends BaseTest {
 
     }
     @Test
+    @Ignore
     public void test4() {
         String data = "300 300";
 
