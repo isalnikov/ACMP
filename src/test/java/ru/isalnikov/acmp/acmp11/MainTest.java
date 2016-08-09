@@ -8,7 +8,6 @@ package ru.isalnikov.acmp.acmp11;
 import java.io.ByteArrayInputStream;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import ru.isalnikov.acmp.base.BaseTest;
 
 /**
