@@ -56,7 +56,6 @@ public class MainTest extends BaseTest {
 
     }
     @Test
-    @Ignore
     public void test4() {
         String data = "300 300";
 
@@ -64,7 +63,7 @@ public class MainTest extends BaseTest {
 
         Main.main(null);
 
-        assertEquals("274", outContent.toString());
+        assertEquals("1018517988167243043134222844204689080525734196832968125318070224677190649881668353091698688", outContent.toString());
 
     }
 
