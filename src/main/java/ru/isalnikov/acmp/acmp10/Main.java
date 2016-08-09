@@ -15,7 +15,6 @@ package ru.isalnikov.acmp.acmp10;
  * @author Igor Salnikov <admin@isalnikov.com>
  */
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -30,8 +29,23 @@ public class Main {
     }
 
     private static void solve(Scanner in, PrintWriter out) {
-      
+        long a, b, c, d;
 
+        a = in.nextLong();
+        b = in.nextLong();
+        c = in.nextLong();
+        d = in.nextLong();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = -100; i <= 100; i++) {
+            if (a * i * i * i + b * i * i + c * i + d == 0) {
+                if (sb.length() > 0) {
+                    sb.append(" ");
+                }
+                sb.append(i);
+
+            }
+        }
+        out.print(sb.toString());
     }
-
 }
