@@ -20,10 +20,17 @@ public class Main {
         }
     }
 
+//НОД (Наибольший общий делитель) или gcd (Greatest Common Divisor)
+//НОД — наибольшее число, которое является делителем одновременно для чисел a и b.
+//Реализация (Алгоритм Евклида):
+    
     public static long gcd(long a, long b) {
         return b == 0 ? a : gcd(b, a % b);
     }
 
+//НОК (Наименьшее общее кратное) или lcm (Least Common Multiple)
+//НОК — наименьшее число, которое делится на a и b без остатка.
+//НОК можно найти через НОД по следующей формуле:  НОК(a,b) = (a*b)/НОД(a,b)
     public static long lcm(long a, long b) {
         return a / gcd(a, b) * b;
     }
