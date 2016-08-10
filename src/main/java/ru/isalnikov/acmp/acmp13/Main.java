@@ -20,7 +20,6 @@ package ru.isalnikov.acmp.acmp13;
  * @author Igor Salnikov <admin@isalnikov.com>
  */
 import java.io.PrintWriter;
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
