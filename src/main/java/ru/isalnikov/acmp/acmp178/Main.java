@@ -16,6 +16,7 @@ package ru.isalnikov.acmp.acmp178;
  */
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -61,7 +62,14 @@ public class Main {
 //                .boxed()
 //                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 //                .entrySet().stream().max(maxValueComparator);
-         
+                 Comparator<? super Map.Entry<Integer, Long>> minByKeyAndMaxByValueComparator = (entry1, entry2) -> {
+            int cmp = Long.compare(entry1.getValue(), entry2.getValue());
+            if (cmp == 0) {
+                cmp = Integer.compare(entry2.getKey(), entry1.getKey());
+            }
+            return cmp;
+
+        };
 
         Optional<Entry<Integer, Long>>  maxValue  =
 
@@ -70,8 +78,10 @@ public class Main {
                 .collect(groupingBy(identity(), counting()))
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.<Integer, Long>comparingByValue().reversed()) 
-                .findFirst();
+                        //.max(Map.Entry.comparingByValue(Long::compareTo));
+                        .max(minByKeyAndMaxByValueComparator);
+                //.sorted(Map.Entry.<Integer, Long>comparingByValue().reversed()) 
+                //.findFirst();
          
 
 
