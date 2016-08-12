@@ -40,23 +40,17 @@ public class Main {
     }
 
     private static void solve(Scanner in, PrintWriter out) {
-        int N = in.nextInt();
-        int array[] = new int[N];
-
-        for (int i = 0; i < N; i++) {
-            int next = in.nextInt();
-            array[i] = next;
-        }
-
+        final int N = in.nextInt();
+        int[] array = IntStream.range(0, N).map(i -> in.nextInt()).toArray();
+        
         IntStream intStream = Arrays.stream(array);
-        // IntStream intStream = IntStream.range(0, N).map(i -> in.nextInt());
+        
         Comparator<? super Map.Entry<Integer, Long>> minByKeyAndMaxByValueComparator = (entry1, entry2) -> {
             int cmp = Long.compare(entry1.getValue(), entry2.getValue());
             if (cmp == 0) {
                 cmp = Integer.compare(entry2.getKey(), entry1.getKey());
             }
             return cmp;
-
         };
 
         Optional<Entry<Integer, Long>> maxValue
