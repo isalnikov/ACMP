@@ -15,20 +15,13 @@ package ru.isalnikov.acmp.acmp178;
  * @author Igor Salnikov <admin@isalnikov.com>
  */
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Optional;
 import java.util.Scanner;
-import static java.util.function.Function.identity;
-import java.util.function.IntSupplier;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.joining;
-import java.util.stream.IntStream;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.LongAdder;
 
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
 
@@ -43,43 +36,20 @@ public class Main {
         int N = in.nextInt();
         int array[] = new int[N];
 
+        ConcurrentHashMap<Integer, LongAdder> map = new ConcurrentHashMap<>();
+
+
+        
         for (int i = 0; i < N; i++) {
             int next = in.nextInt();
             array[i] = next;
+            map.computeIfAbsent(next, k -> new LongAdder()).increment();
         }
+   
+        Comparator<? super Entry<Integer, LongAdder>> maxValueComparator = (entry1, entry2) -> 
+                 Integer.compare(entry1.getValue().intValue() , entry2.getValue().intValue());
 
-        IntStream intStream = Arrays.stream(array);
-        // IntStream intStream = IntStream.range(0, N).map(i -> in.nextInt());
-        Comparator<? super Map.Entry<Integer, Long>> minByKeyAndMaxByValueComparator = (entry1, entry2) -> {
-            int cmp = Long.compare(entry1.getValue(), entry2.getValue());
-            if (cmp == 0) {
-                cmp = Integer.compare(entry2.getKey(), entry1.getKey());
-            }
-            return cmp;
-
-        };
-
-        Optional<Entry<Integer, Long>> maxValue
-                = intStream
-                .boxed()
-                .collect(groupingBy(identity(), counting()))
-                .entrySet()
-                .stream()
-                .max(minByKeyAndMaxByValueComparator);
-
-        intStream = Arrays.stream(array);
-
-        IntSupplier intSupplier = () -> maxValue.get().getKey();
-
-        IntStream maxIntStream = IntStream.generate(intSupplier).limit(maxValue.get().getValue());
-
-        IntStream result = IntStream.concat(intStream.filter(i -> i != maxValue.get().getKey()), maxIntStream);
-
-        String s = result
-                .mapToObj(Integer::toString)
-                .collect(joining(" "));
-
-        out.print(s);
+        out.print(map);
         out.flush();
     }
 
