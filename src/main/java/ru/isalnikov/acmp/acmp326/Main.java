@@ -21,9 +21,10 @@ package ru.isalnikov.acmp.acmp326;
  *
  * @author Igor Salnikov <admin@isalnikov.com>
  */
-import ru.isalnikov.acmp.acmp178.*;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -57,15 +58,27 @@ public class Main {
 
         IntStream intStream = Arrays.stream(array);
 
-        // IntStream intStream = IntStream.range(0, N).map(i -> in.nextInt());
-        Optional<Entry<Integer, Long>> maxValue
-                = intStream
+           Comparator<? super Map.Entry<Integer, Long>> mixValueComparator = (entry1, entry2) -> 
+                 Integer.compare(entry1.getKey() , entry2.getKey());
+        
+           Comparator<? super Entry<Long, List<Entry<Integer, Long>>>> maxKeyComparator = (e1,e2) ->Long.compare(e1.getKey(), e2.getKey())  ;
+        
+        Optional<Entry<Integer, Long>> maxValue = intStream
                 .boxed()
                 .collect(groupingBy(identity(), counting()))
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.<Integer, Long>comparingByValue().reversed())
+                .collect(groupingBy(key->key.getValue()))
+                .entrySet()
+                .stream()
+                .max(maxKeyComparator)
+                .map(e->e.getValue())
+                .get()
+                .stream()
+                .sorted(mixValueComparator)
                 .findFirst();
+                
+        
 
         intStream = Arrays.stream(array);
 
