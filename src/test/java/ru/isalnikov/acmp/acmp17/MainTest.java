@@ -78,6 +78,19 @@ public class MainTest extends BaseTest {
     }
 
     @Test
+    public void test9() {
+        String data = "5\n"
+                + "1 2 1 1 1";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("4", outContent.toString());
+
+    }
+
+    @Test
     public void test7() {
         String data = "7\n"
                 + "1 2 1 3 1 2 1";

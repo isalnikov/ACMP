@@ -13,7 +13,6 @@ package ru.isalnikov.acmp.acmp17;
  *
  * @author Igor Salnikov <admin@isalnikov.com>
  */
-
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -30,15 +29,17 @@ public class Main {
     }
 
     private static void prefixFunction(int[] array, int[] p) {
+        int k = 0;
         for (int i = 1; i < array.length; ++i) {
-            int j = p[i - 1];
-            while (j > 0 && array[i] != array[j]) {
-                j = p[j - 1];
+            while ((k > 0) && (array[k] != array[i])) {
+                k = p[k - 1];
             }
-            if (array[i] == array[j]) {
-                ++j;
+
+            if (array[k] == array[i]) {
+                ++k;
             }
-            p[i] = j;
+
+            p[i] = k;
         }
 
     }
@@ -47,13 +48,10 @@ public class Main {
         int N = in.nextInt();
         int[] array = IntStream.range(0, N).map(i -> in.nextInt()).toArray();
         int[] p = new int[N];
-        prefixFunction(array,p);
-        
-        
-        out.print(N - p[N-1]);
+        prefixFunction(array, p);
+
+        out.print(N - p[N - 1]);
         out.flush();
     }
-
-
 
 }
