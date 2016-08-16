@@ -43,6 +43,28 @@ public class MainTest extends BaseTest {
         assertEquals("120", outContent.toString());
 
     }
+    @Test
+    public void test4() {
+        String data = "5";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main1.main(null);
+
+        assertEquals("120", outContent.toString());
+
+    }
+    @Test
+    public void test5() {
+        String data = "5";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main2.main(null);
+
+        assertEquals("120", outContent.toString());
+
+    }
 
     @Test
 
