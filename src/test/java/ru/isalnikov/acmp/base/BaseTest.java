@@ -3,7 +3,6 @@
  */
 package ru.isalnikov.acmp.base;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
