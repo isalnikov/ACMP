@@ -1,6 +1,4 @@
-/*
- * 
- */
+
 package ru.isalnikov.acmp.base;
 
 import java.io.ByteArrayOutputStream;
