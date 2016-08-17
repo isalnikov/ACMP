@@ -1,5 +1,5 @@
 /*
- * https://github.com/begoon/acm/tree/master/acmp.ru
+ * 
  */
 package ru.isalnikov.acmp.base;
 
@@ -11,10 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-/**
- *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
- */
+
 public class BaseTest {
 
     public final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

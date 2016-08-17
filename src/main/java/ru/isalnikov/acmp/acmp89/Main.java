@@ -86,7 +86,7 @@ public class Main {
 
         out.println(String.format("The fastest train is %s.", fastTainName));
         out.print(String.format("It's speed is %d km/h, approximately.", fastSpeed));
-
+       out.flush();
     }
 
 }
