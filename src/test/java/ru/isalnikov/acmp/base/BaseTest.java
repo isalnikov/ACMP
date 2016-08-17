@@ -1,6 +1,7 @@
 
 package ru.isalnikov.acmp.base;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -15,7 +16,7 @@ public class BaseTest {
     public final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     public final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    public ByteArrayOutputStream inContent;
+    public ByteArrayInputStream inContent;
 
     private static InputStream stdin;
     private static PrintStream stdout;
