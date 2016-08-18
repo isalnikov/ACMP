@@ -22,6 +22,7 @@ package ru.isalnikov.acmp.acmp188;
  */
 
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
@@ -43,7 +44,7 @@ public class Main {
         out.flush();
     }
     
-    public static long subfactorial(int x) {
+     public static BigInteger subfactorial(int x) {
         int i = x;
         int sign = 0;
         if (i % 2 == 1) {
@@ -53,9 +54,9 @@ public class Main {
             sign = 1;
         }
         if (i == 0) {
-            return 1;
+            return BigInteger.ONE;
         }
 
-        return i * subfactorial(i - 1) + sign;
+        return subfactorial(i - 1).multiply(BigInteger.valueOf(i)).add(BigInteger.valueOf(sign));
     }
 }
