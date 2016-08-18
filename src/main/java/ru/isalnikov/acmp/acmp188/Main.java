@@ -20,43 +20,23 @@ package ru.isalnikov.acmp.acmp188;
  *
  * @author Igor Salnikov <admin@isalnikov.com>
  */
-
 import java.io.PrintWriter;
 import java.math.BigInteger;
+import static java.math.BigInteger.valueOf;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        
-        
         try (Scanner in = new Scanner(System.in);
-                PrintWriter out = new PrintWriter(System.out)) {
-
-            solve(in, out);
+           PrintWriter out = new PrintWriter(System.out)) {
+            out.print(s(in.nextInt()));
+            out.flush();
         }
     }
 
-    private static void solve(Scanner in, PrintWriter out) {
-        int n = in.nextInt();
-        out.print(subfactorial(n));
-        out.flush();
-    }
-    
-     public static BigInteger subfactorial(int x) {
-        int i = x;
-        int sign = 0;
-        if (i % 2 == 1) {
-            sign = -1;
-        }
-        if (i % 2 == 0) {
-            sign = 1;
-        }
-        if (i == 0) {
-            return BigInteger.ONE;
-        }
-
-        return subfactorial(i - 1).multiply(BigInteger.valueOf(i)).add(BigInteger.valueOf(sign));
+    public static BigInteger s(int i) {
+        int sign = (i & 1) ==0 ? 1: -1;
+        return i == 0 ? BigInteger.ONE : s(i-1).multiply(valueOf(i)).add(valueOf(sign));
     }
 }
