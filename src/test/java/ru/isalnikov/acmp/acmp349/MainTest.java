@@ -43,6 +43,21 @@ public class MainTest extends BaseTest {
                 + "5\n", outContent.toString());
 
     }
+    
+        @Test
+    public void test4_1_1() {
+        String data = "2 5";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main4.main(null);
+
+        assertEquals("2\n"
+                + "3\n"
+                + "5\n", outContent.toString());
+
+    }
 
     @Test
     public void test_2() {
@@ -213,6 +228,18 @@ public class MainTest extends BaseTest {
 
     }
     @Test
+    public void test4_1() {
+        String data = "4 4";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main4.main(null);
+
+        assertEquals("Absent\n", outContent.toString());
+
+    }
+    @Test
     public void test3_1() {
         String data = "4 4";
 
@@ -269,6 +296,18 @@ public class MainTest extends BaseTest {
         System.setIn(inContent);
 
         Main.main(null);
+
+        assertEquals("2\n", outContent.toString());
+
+    }
+    @Test
+    public void test4_2() {
+        String data = "2 2";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main4.main(null);
 
         assertEquals("2\n", outContent.toString());
 

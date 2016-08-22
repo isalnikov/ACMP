@@ -9,7 +9,9 @@ package ru.isalnikov.acmp.acmp349;
  * пробелом (2 ≤ M ≤ N ≤ 10^6)
  *
  *
- *
+ * https://habrahabr.ru/post/133037/
+ * http://stackoverflow.com/questions/10580159/sieve-of-atkin-explanation-and-java-example
+ * https://gist.github.com/hephaestus9/6a47e429f3f8c91d87bd
  *
  */
 import java.io.*;
