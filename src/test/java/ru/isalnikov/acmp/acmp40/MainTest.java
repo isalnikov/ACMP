@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.isalnikov.acmp.acmp39;
+package ru.isalnikov.acmp.acmp40;
 
+import ru.isalnikov.acmp.acmp40.Main;
 import java.io.ByteArrayInputStream;
 import org.junit.Test;
 import static org.junit.Assert.*;

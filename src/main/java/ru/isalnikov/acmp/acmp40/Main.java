@@ -1,4 +1,4 @@
-package ru.isalnikov.acmp.acmp39;
+package ru.isalnikov.acmp.acmp40;
 
 /**
  * Необходимо вычислить значение 2n.
