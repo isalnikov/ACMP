@@ -29,17 +29,18 @@ public class Main {
     }
 
     private static void prefixFunction(int[] array, int[] p) {
-        int k = 0;
+        int j = 0;
         for (int i = 1; i < array.length; ++i) {
-            while ((k > 0) && (array[k] != array[i])) {
-                k = p[k - 1];
+             j = p[i - 1];
+            while (j > 0 && (array[j] != array[i])) {
+                j = p[j - 1];
             }
 
-            if (array[k] == array[i]) {
-                ++k;
+            if (array[j] == array[i]) {
+                ++j;
             }
 
-            p[i] = k;
+            p[i] = j;
         }
 
     }

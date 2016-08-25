@@ -115,4 +115,17 @@ public class MainTest extends BaseTest {
         assertEquals("7", outContent.toString());
 
     }
+
+    @Test
+    public void test10() {
+        String data = "11 \n"
+                + "1 2 1 1 2 1 2 1 1 2 1";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("5", outContent.toString());
+
+    }
 }
