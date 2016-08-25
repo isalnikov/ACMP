@@ -18,9 +18,8 @@ import ru.isalnikov.acmp.base.BaseTest;
  *
  * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
  */
-public class MainTest extends BaseTest{
-    
-   
+public class MainTest extends BaseTest {
+
     @Test
     public void test() {
         String data = "3";
@@ -32,5 +31,17 @@ public class MainTest extends BaseTest{
         assertEquals("12", outContent.toString());
 
     }
-    
+
+    @Test
+    public void test1() {
+        String data = "50";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("1688849860263936", outContent.toString());
+
+    }
+
 }
