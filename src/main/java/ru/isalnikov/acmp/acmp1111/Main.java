@@ -19,9 +19,9 @@ public class Main {
 
         try (Scanner in = new Scanner(System.in);
                 PrintWriter out = new PrintWriter(System.out)) {
-            String s = in.nextLine();
+            String s = in.nextLine(); //int (n/10%10)
             if (s.length() > 1) {
-                out.print(s.charAt(s.length() - 2));
+                out.print(s.charAt(s.length() - 2)); 
             } else {
                 out.print("0");
             }
