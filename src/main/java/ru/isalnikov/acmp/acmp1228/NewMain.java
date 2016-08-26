@@ -7,6 +7,12 @@ import java.util.stream.IntStream;
 public class NewMain {
 
     public static boolean isPrime(int x) {
+        if(x<3) {
+            if(x <= 0 ) return false;
+            if(x == 1 ) return false;
+            if(x == 2 ) return true;
+        }
+            
         return IntStream.rangeClosed(2, (int) (Math.sqrt(x)))
                 .allMatch(n -> x % n != 0);
     }
