@@ -41,7 +41,7 @@ public class MainTest extends BaseTest {
 
         Main.main(null);
 
-        assertEquals("567", outContent.toString());
+        assertEquals("576", outContent.toString());
 
     }
     
