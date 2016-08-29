@@ -51,7 +51,7 @@ public class Main {
 
             long midb = b1 + b2 + b3 - minb - maxb;
 
-            out.print(maxa * maxb + mida * midb + mina * mina);
+            out.print(maxa * maxb + mida * midb + mina * minb);
             out.flush();
         }
     }
