@@ -10,7 +10,18 @@ import ru.isalnikov.acmp.base.BaseTest;
 public class MainTest extends BaseTest {
 
     @Test
-    public void test() {
+    public void test1() {
+        String data = "1";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("9 45", outContent.toString());
+
+    }
+    @Test
+    public void test2() {
         String data = "2";
 
         System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -22,7 +33,7 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void test1() {
+    public void test3() {
         String data = "3";
 
         System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -33,7 +44,41 @@ public class MainTest extends BaseTest {
 
     }
     @Test
-    public void test2() {
+    public void test4() {
+        String data = "4";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("12 25", outContent.toString());
+
+    }
+    @Test
+    public void test5() {
+        String data = "5";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("13 25", outContent.toString());
+
+    }
+    
+    @Test
+    public void test10() {
+        String data = "10";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("17 55", outContent.toString());
+
+    }
+    @Test
+    public void test() {
         LocalTime localTime = LocalTime.of(9, 0);
         System.err.println(localTime);
         System.err.println( localTime.format(DateTimeFormatter.ofPattern("HH mm")));

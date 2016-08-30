@@ -32,7 +32,9 @@ public class Main {
                int pause = ((i & 1)  == 1) ? 5 : 15;
                localTime = localTime.plusMinutes(pause).plusMinutes(45);
             }
-            out.print(localTime.format(DateTimeFormatter.ofPattern("HH mm")));
+            String str =localTime.format(DateTimeFormatter.ofPattern("HH mm"));
+            str = str.startsWith("0") ? str.substring(1) : str;
+            out.print(str);
             out.flush();
         }
     }
