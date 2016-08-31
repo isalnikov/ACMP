@@ -16,8 +16,13 @@ package ru.isalnikov.acmp.acmp347;
  * @author Igor Salnikov <admin@isalnikov.com>
  */
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
-import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -29,7 +34,7 @@ public class Main {
             solve(in, out);
         }
     }
-
+    
     public static String[] names = {"Impossible", "Four of a Kind", "Full House", "Straight", "Three of a Kind", "Two Pairs", "One Pair", "Nothing"};
 
     private static void solve(Scanner in, PrintWriter out) {
@@ -51,22 +56,41 @@ public class Main {
             }
             //
             array[next]++;
-            if (array[next] == 5) {
+
+
+        }
+        Arrays.sort(array);
+        
+        List<Integer> list = IntStream.of(array).boxed().collect(Collectors.toList());
+        list.removeAll(Collections.singleton(0));
+        System.err.println(list);
+        
+
+        
+       boolean isStraight = true;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 5) {
                 result = names[0];
+               isStraight = false;
+                break;
             }
-            if (array[next] == 4) {
+            if (array[i] == 4) {
                 result = names[1];
+                isStraight = false;
+       
             }
-            if (array[next] == 3) {
+            if (array[i] == 3) {
+       isStraight = false;
                 result = names[4];
                 for (int j = 0; j < array.length; j++) {
-                    if (array[j] == 2) {
+                    if (i != j && array[j] == 2) {
                         result = names[2];
                     }
                 }
 
             }
-            if (array[next] == 2) {
+            if (array[i] == 2) {
+                isStraight = false;
                 result = names[6];
                 for (int j = 0; j < array.length; j++) {
                     if (i != j && array[j] == 2) {
@@ -77,9 +101,9 @@ public class Main {
             }
 
         }
-        IntPredicate i = (x) -> x > 0;
+        
        
-        if ( ((min + max) * 5 / 2) == sum) {
+        if (isStraight && (max - min == 4) ) {
             result = names[3];
         }
 
