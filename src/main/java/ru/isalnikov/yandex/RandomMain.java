@@ -41,6 +41,15 @@ public class RandomMain {
               if(a == 0 && b ==1) return 2;
           }
    }
+    public int rand3_2() {
+        while (true) {
+            int r4 = rand2() * 2 + rand2();
+            if (r4 != 3) {
+                return r4;
+            }
+        }
+
+    }
    
     public static void main(String[] args) {
         
@@ -48,7 +57,7 @@ public class RandomMain {
         
         HashMap<Integer,AtomicInteger> map = new HashMap<>();
         for (int i = 0; i < 100_000_000; i++) {
-            int next = rm.rand3_1();
+            int next = rm.rand3_2();
             
             
             map.putIfAbsent(next, new AtomicInteger(0));

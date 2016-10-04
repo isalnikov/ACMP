@@ -70,13 +70,22 @@ public class RandomMainTest {
      */
     @Test
     public void testRand3() {
-        System.out.println("rand3");
-        RandomMain instance = new RandomMain();
-        int expResult = 0;
-        int result = instance.rand3();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+            RandomMain rm = new RandomMain();
+        int count = 100_000_000;
+        HashMap<Integer, AtomicInteger> map = new HashMap<>();
+        for (int i = 0; i < count; i++) {
+            int next = rm.rand3_2();
+
+            map.putIfAbsent(next, new AtomicInteger(0));
+            map.get(next).incrementAndGet();
+
+        }
+
+        System.out.println(map);
+        double value = 3.0 * (map.get(0).get()) / (count);
+        System.out.println(value);
+        assertTrue(equals(value, 1.0));
+
     }
 
     /**
