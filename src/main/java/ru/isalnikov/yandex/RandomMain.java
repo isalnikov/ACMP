@@ -23,8 +23,8 @@ public class RandomMain {
    
       public  int rand3(){
        int s = 0;
-          for (int i = 0; i < 6; i++) {
-              s+=rand2();
+          for (int i = 0; i < 10; i++) {
+              s = s | (1 << rand2());
               
           }
   
@@ -48,7 +48,7 @@ public class RandomMain {
         
         HashMap<Integer,AtomicInteger> map = new HashMap<>();
         for (int i = 0; i < 100_000_000; i++) {
-            int next = rm.rand3_1();
+            int next = rm.rand3();
             
             
             map.putIfAbsent(next, new AtomicInteger(0));

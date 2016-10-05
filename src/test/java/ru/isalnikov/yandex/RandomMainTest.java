@@ -65,18 +65,16 @@ public class RandomMainTest {
 
     }
 
-    /**
-     * Test of rand3 method, of class RandomMain.
-     */
     @Test
-    public void testRand3() {
-        System.out.println("rand3");
-        RandomMain instance = new RandomMain();
-        int expResult = 0;
-        int result = instance.rand3();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetbit() {
+        int b = 0;
+        
+        b<<=1;
+        System.out.println(String.format("%08d",b));
+        
+         System.out.println(String.format("%08x",55));
+        b<<=1;
+        System.out.println(Integer.toBinaryString(b));
     }
 
     /**
