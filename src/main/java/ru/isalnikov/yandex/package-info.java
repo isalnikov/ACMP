@@ -14,7 +14,7 @@
  * 
  * http://it.icmp.ru/post/view/4549
  * 
- * 
+ * https://habrahabr.ru/company/yandex/blog/206234/
  * 
  */
 package ru.isalnikov.yandex;
