@@ -5,6 +5,7 @@
  */
 package ru.isalnikov.yandex;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.After;
@@ -75,6 +76,30 @@ public class RandomMainTest {
          System.out.println(String.format("%08x",55));
         b<<=1;
         System.out.println(Integer.toBinaryString(b));
+        
+        
+        System.out.println("1<<1 = " + (1<<1) +  " " + Integer.toBinaryString(1<<1));
+        System.out.println("1<<2 = " + (1<<2) +  " " + Integer.toBinaryString(1<<2));
+        System.out.println("1<<4 = " + (1<<4) +  " " + Integer.toBinaryString(1<<4));
+        System.out.println("1<<8 = " + (1<<8)  + " " + Integer.toBinaryString(1<<8));
+        
+        System.out.println("1<<1 = " + (1<<1) +  " " + Integer.toBinaryString(1<<1));
+        System.out.println("1<<2 = " + (1<<2) +  " " + Integer.toBinaryString(1<<2));
+        System.out.println("1<<3 = " + (1<<3) +  " " + Integer.toBinaryString(1<<3));
+        System.out.println("1<<10 = " + (1<<10) +  " " + Integer.toBinaryString(1<<10));
+        System.out.println("1<<4 = " + (1<<4) +  " " + Integer.toBinaryString(1<<4));
+        System.out.println("1<<8 = " + (1<<8)  + " " + Integer.toBinaryString(1<<8));
+        
+        
+        System.out.println(Integer.parseInt("100", 2));
+        System.out.println(Integer.parseInt("100000000", 2));
+        
+        System.out.println(String.format("%16s", Integer.toBinaryString(1)).replaceAll(" ", "0") );
+        System.out.println(String.format("%16s", Integer.toBinaryString(15)).replaceAll(" ", "0") );
+        System.out.println(String.format("%016d", new BigInteger(Integer.toBinaryString(1))));
+        System.out.println(String.format("%016d", new BigInteger(Integer.toBinaryString(15))));
+        System.out.println(String.format("%016d", Integer.parseInt(Integer.toBinaryString(15))));
+
     }
 
     /**

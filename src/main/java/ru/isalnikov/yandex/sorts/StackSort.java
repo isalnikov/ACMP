@@ -1,5 +1,5 @@
 
-package ru.isalnikov.yandex;
+package ru.isalnikov.yandex.sorts;
 
 import java.util.Stack;
 
