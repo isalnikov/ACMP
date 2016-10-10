@@ -6,18 +6,11 @@
 package ru.isalnikov.acmp.acmp680;
 
 import java.io.ByteArrayInputStream;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import ru.isalnikov.acmp.base.BaseTest;
 
-/**
- *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
- */
+
 public class MainTest extends BaseTest {
 
     @Test
