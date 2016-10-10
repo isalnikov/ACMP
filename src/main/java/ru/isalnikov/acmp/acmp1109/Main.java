@@ -22,7 +22,7 @@ public class Main {
                 PrintWriter out = new PrintWriter(System.out)) {
             int n = in.nextInt();
 
-            out.println(String.format("The next number for the number %d is %d.",n ,n+1));
+            out.print(String.format("The next number for the number %d is %d.\n",n ,n+1));
             out.print(String.format("The previous number for the number %d is %d.",n,n-1));
             out.flush();
         }

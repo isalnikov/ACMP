@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ru.isalnikov.yandex;
 
 import java.math.BigInteger;
@@ -99,6 +94,23 @@ public class RandomMainTest {
         System.out.println(String.format("%016d", new BigInteger(Integer.toBinaryString(1))));
         System.out.println(String.format("%016d", new BigInteger(Integer.toBinaryString(15))));
         System.out.println(String.format("%016d", Integer.parseInt(Integer.toBinaryString(15))));
+    }
+    public void testRand3() {
+            RandomMain rm = new RandomMain();
+        int count = 100_000_000;
+        HashMap<Integer, AtomicInteger> map = new HashMap<>();
+        for (int i = 0; i < count; i++) {
+            int next = rm.rand3_2();
+
+            map.putIfAbsent(next, new AtomicInteger(0));
+            map.get(next).incrementAndGet();
+
+        }
+
+        System.out.println(map);
+        double value = 3.0 * (map.get(0).get()) / (count);
+        System.out.println(value);
+        assertTrue(equals(value, 1.0));
 
     }
 

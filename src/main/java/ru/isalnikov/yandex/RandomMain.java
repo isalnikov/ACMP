@@ -30,13 +30,46 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class RandomMain {
 
-    public static final Random R = new Random(System.currentTimeMillis() / 2);
+   public static final Random R = new Random(System.currentTimeMillis()/2);
+   
+   public  int rand2(){
+       return R.nextInt(2);
+   }
+   
+      public  int rand3(){
+       int s = 0;
+          for (int i = 0; i < 6; i++) {
+              s+=rand2();
+              
+          }
+  
+       return s % 3;
+   }
+      public  int rand3_1(){
+          while (true) {          
+              
+              int a = rand2();
+              int b = rand2();
+              
+              if(a == 0 && b ==0) return 0;
+              if(a == 1 && b ==0) return 1;
+              if(a == 0 && b ==1) return 2;
+          }
+   }
+    public int rand3_2() {
+        while (true) {
+            int r4 = rand2() * 2 + rand2();
+            if (r4 != 3) {
+                return r4;
+            }
+        }
 
-    public int rand2() {
-        return R.nextInt(2);
     }
+   
 
-    public int rand3() {
+ 
+
+    public int rand3_3() {
         int s = 0;
         for (int i = 0; i < 10; i++) {
             s += rand2();
@@ -46,7 +79,7 @@ public class RandomMain {
         return s % 3;
     }
 
-    public int rand3_1() {
+    public int rand3_1_1() {
         while (true) {
 
             int a = rand2();
@@ -64,13 +97,20 @@ public class RandomMain {
         }
     }
 
+
     public static void main(String[] args) {
 
         RandomMain rm = new RandomMain();
 
         HashMap<Integer, AtomicInteger> map = new HashMap<>();
         for (int i = 0; i < 100_000_000; i++) {
-            int next = rm.rand3();
+
+            int next = rm.rand3_2();
+            
+            
+
+          //  int next = rm.rand3();
+
 
             map.putIfAbsent(next, new AtomicInteger(0));
             map.get(next).incrementAndGet();
