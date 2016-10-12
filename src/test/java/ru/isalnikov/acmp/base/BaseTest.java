@@ -42,4 +42,9 @@ public class BaseTest {
     public void tearDown() {
         inContent = null;
     }
+ 
+    public static ByteArrayInputStream input(String input) {
+        return new ByteArrayInputStream(input.getBytes());
+
+    } 
 }
