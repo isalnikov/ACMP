@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Consumer;
+import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -119,9 +120,12 @@ static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<? super T> predicate)
         UnaryOperator<Tuple<BigInteger, BigInteger>> f = x -> new Tuple<>(x._2, x._1.add(x._2));
         return  Stream.iterate(seed, f)
                 .map(x -> x._1)
+                .peek(x->System.err.println("map "+x))
                 .limit(20)
                 .filter(n -> n.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO))
+                .peek(x->System.err.println("filter "+x))
                 .filter(x -> x.compareTo(BigInteger.valueOf(number)) < 0 )
+                .peek(x->System.err.println("compareTo "+x))
                 .reduce((n1, n2) -> n1.add(n2)).get();
     }
     
@@ -156,10 +160,16 @@ static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<? super T> predicate)
     
 
     public static void main(String[] args) {
-        System.out.println(fibonacciTupleLimit(4000000));
-        System.out.println(iter());
+//        System.out.println(fibonacciTupleLimit(4000000));
+//        System.out.println(iter());
+//        
+//    int a = IntStream.range(1, 100).reduce(0, (left, right) -> left + right*2);
+//        System.out.println(a);  
         
-    
+         IntStream.iterate(1, n->n+3)
+                 .peek(n->{System.out.println(n);})
+                 .allMatch(n->n < 15)
+                 ;//.forEachOrdered(System.out::println);
         
     }
 

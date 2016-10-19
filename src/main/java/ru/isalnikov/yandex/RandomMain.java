@@ -51,9 +51,9 @@ public class RandomMain {
               int a = rand2();
               int b = rand2();
               
-              if(a == 0 && b ==0) return 0;
-              if(a == 1 && b ==0) return 1;
-              if(a == 0 && b ==1) return 2;
+              if(a == 0 && b == 0) return 0;
+              if(a == 1 && b == 0) return 1;
+              if(a == 0 && b == 1) return 2;
           }
    }
     public int rand3_2() {
@@ -71,7 +71,7 @@ public class RandomMain {
 
     public int rand3_3() {
         int s = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 256; i++) {
             s += rand2();
 
         }
@@ -103,9 +103,9 @@ public class RandomMain {
         RandomMain rm = new RandomMain();
 
         HashMap<Integer, AtomicInteger> map = new HashMap<>();
-        for (int i = 0; i < 100_000_000; i++) {
+        for (int i = 0; i < 10_00_000; i++) {
 
-            int next = rm.rand3_2();
+            int next = rm.rand3_2(); //{0=333991, 1=333340, 2=332669} {0=334002, 1=332837, 2=333161}
             
             
 
