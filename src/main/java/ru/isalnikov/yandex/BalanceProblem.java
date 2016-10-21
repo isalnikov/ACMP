@@ -68,13 +68,12 @@ public class BalanceProblem {
         Account to = new Account();
         to.setBalance(10000);
         
-        Random random = new Random(System.currentTimeMillis()/3);
         
         ExecutorService service = Executors.newFixedThreadPool(10);
         AtomicInteger integer = new AtomicInteger(0);
         for (int i = 0; i < 1000; i++) {
          service.execute(()->{
-            final  int  amount = 1;// random.nextInt(10)+1;
+            final  int  amount = 1;
              System.out.println(integer.incrementAndGet() + " " + Thread.currentThread().getName() + " amount " + amount  +" from : "+ from.getBalance() + " to :"+to.getBalance() );
              transfer(from, to, amount);
          });
