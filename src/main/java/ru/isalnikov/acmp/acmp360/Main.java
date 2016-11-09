@@ -68,8 +68,8 @@ class Main {
 
                     max = Math.max(max, b[j] + b[j + 1] + c[j + 1]);
                     max = Math.max(max, b[j] + b[j + 1] + c[j]);
-                    max = Math.max(max, c[j] + b[j + 1] + b[j + 1]);
-                    max = Math.max(max, c[j] + c[j] + b[j]);
+                    max = Math.max(max, c[j] + c[j + 1] + b[j + 1]);
+                    max = Math.max(max, c[j] + c[j + 1] + b[j]);
 
                 }
             }
