@@ -14,22 +14,12 @@ package ru.isalnikov.acmp.acmp360;
  * https://www.youtube.com/watch?v=aNKIt5C1DKg
  *
  */
-//m:=b[i]+b[i+1]+a[i+1]; if m>max then max:=m; 
-//m:=a[i]+b[i]+b[i+1]; if m>max then max:=m; 
-//m:=a[i]+b[i+1]+a[i+1]; if m>max then max:=m; 
-//m:=b[i]+a[i]+a[i+1]; if m>max then max:=m; 
-//            
-//a[i,j]+a[i,j-1]+a[i-1,j]>max 
-//a[i,j]+a[i-1,j]+a[i-1,j-1]>max 
-//a[i,j]+a[i,j-1]+a[i-1,j-1]>max 
-//a[i,j]+a[i-1,j]+a[i-2,j]>max 
-//a[i,j]+a[i,j-1]+a[i,j-2]>max 
-//a[i,j]+a[i-1,j]+a[i-1,j+1]>max 
 import java.io.*;
 import java.util.*;
 
 class Main {
-
+   
+   
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in);
                 PrintWriter out = new PrintWriter(System.out)) {
@@ -39,41 +29,44 @@ class Main {
 
     private static void solve(Scanner in, PrintWriter out) {
         int n = in.nextInt();
+        
+       
+
         int max = Integer.MIN_VALUE;
         int[] a = new int[n]; // <- 1 <-4
         int[] b = new int[n]; // <- 2 
         int[] c = new int[n]; // <- 3
+        in.nextLine();
         for (int i = 0; i < n; i++) {
+
             int[] t = a;
             a = b;
             b = c;
             c = t;
 
-            for (int j = 0; j < n; j++) {
-                c[j] = in.nextInt();
-            }
+            String s = in.nextLine();
+            c = Arrays.stream(s.split(" ")).mapToInt(Integer::parseInt).toArray();
+            //    c = Arrays.asList(s.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 
-            for (int j = 0; j + 2 < n; j++) {
-                max = Math.max(max, c[j] + c[j + 1] + c[j + 2]);
-            }
-
-            if (i >= 2) {
-                for (int j = 0; j < n; j++) {
-                    max = Math.max(max, a[j] + b[j] + c[j]);
+            for (int j = 0; j  < n; j++) {
+                
+                if((j + 2)  < n){
+                   max = Math.max(max, c[j] + c[j + 1] + c[j + 2]);
                 }
-            }
-
-            if (i >= 1) {
-                for (int j = 0; j + 1 < n; j++) {
-
+                
+                if (i >= 1 && ((j + 1 ) < n)) {
+                    
                     max = Math.max(max, b[j] + b[j + 1] + c[j + 1]);
                     max = Math.max(max, b[j] + b[j + 1] + c[j]);
                     max = Math.max(max, c[j] + c[j + 1] + b[j + 1]);
                     max = Math.max(max, c[j] + c[j + 1] + b[j]);
+                }
+  
+                if (i >= 2) {
+                    max = Math.max(max, a[j] + b[j] + c[j]);
 
                 }
             }
-
         }
         out.print(max);
         out.flush();
