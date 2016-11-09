@@ -9,6 +9,9 @@ import ru.isalnikov.acmp.acmp224.LimitedQueue;
  * Найти K Максимумов в массиве из N элементов
  *
  * Решение для K=2 Решение для K=N/const
+ * 
+ * 
+ * https://tproger.ru/problems/find-the-smallest-one-million-numbers-in-one-billion-numbers/
  */
 public class MMaxSolution {
 
@@ -66,9 +69,50 @@ public class MMaxSolution {
         return result;
     }
 
+    
+    public int partition(int[] array, int left, int right, int pivot) {
+    while (true) {
+        while (left <= right && array[left] <= pivot) {
+            left++;
+        }
+    
+        while (left <= right && array[right] > pivot) {
+            right--;
+        }
+ 
+        if (left > right) {
+            return left - 1;
+        }
+ 
+        swap(array, left, right);
+    }
+}
+ 
+
+
+//public int rank(int[] array, int left, int right, int rank) {
+//    int index = ThreadLocalRandom.current().nextInt(left, right + 1);
+//    int pivot = array[index];
+//    
+//    /* Раздел и возврат конца левого раздела */
+//    int leftEnd = partition(array, left, right, pivot);
+//    
+//    int leftSize = leftEnd - left + 1;
+//    if (leftSize == rank + 1) {
+//        return Math.max(array, left, leftEnd);
+//    } else if (rank < leftSize) {
+//        return rank(array, left, leftEnd, rank);
+//    } else {
+//        return rank(array, leftEnd + 1, right, rank - leftSize);
+//    }
+//}
+//    
     public static void main(String[] args) {
 
         int[] a = {1, 4, 67, 8, 2, 1 - 4, 4, 57, 3, -44, 46};
+        
+        System.out.println(Arrays.stream(a).max().getAsInt());
+        
         //System.out.println(Arrays.toString(a));
         //System.out.println(Arrays.toString(solution3(a, 2)));
         //System.out.println(Arrays.toString(a));
@@ -77,6 +121,15 @@ public class MMaxSolution {
         //System.out.println(Arrays.toString(a));
         //System.out.println(Arrays.toString(a));
         //System.out.println(Arrays.toString(solution2(new int[]{1, 2, 3})));
+
+    }
+
+    private void swap(int[] array, int left, int right) {
+        int tmpleft = array[left];
+        int tmpright = array[right];
+
+        array[left] = tmpright;
+        array[right] = tmpleft;
 
     }
 
