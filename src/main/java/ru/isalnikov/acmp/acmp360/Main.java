@@ -30,8 +30,6 @@ class Main {
     private static void solve(Scanner in, PrintWriter out) {
         int n = in.nextInt();
         
-       
-
         int max = Integer.MIN_VALUE;
         int[] a = new int[n]; // <- 1 <-4
         int[] b = new int[n]; // <- 2 
@@ -48,7 +46,7 @@ class Main {
             c = Arrays.stream(s.split(" ")).mapToInt(Integer::parseInt).toArray();
             //    c = Arrays.asList(s.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 
-            for (int j = 0; j  < n; j++) {
+            for (int j = 0; j < n; j++) {
                 
                 if((j + 2)  < n){
                    max = Math.max(max, c[j] + c[j + 1] + c[j + 2]);

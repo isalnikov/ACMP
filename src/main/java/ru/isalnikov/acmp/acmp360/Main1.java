@@ -48,22 +48,22 @@ class Main1 {
         }
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j + 2 < n; j++) {
-                max = Math.max(max, a[i][j] + a[i][j + 1] + a[i][j + 2]);
-            }
-        }
-        for (int i = 0; i + 2 < n; i++) {
             for (int j = 0; j < n; j++) {
-                max = Math.max(max, a[i][j] + a[i + 1][j] + a[i + 2][j]);
-            }
-        }
 
-        for (int i = 0; i + 1 < n; i++) {
-            for (int j = 0; j + 1 < n; j++) {
-                max = Math.max(max, a[i + 1][j] + a[i][j + 1] + a[i + 1][j + 1]);
-                max = Math.max(max, a[i][j] + +a[i][j + 1] + a[i + 1][j + 1]);
-                max = Math.max(max, a[i][j] + a[i + 1][j] + a[i + 1][j + 1]);
-                max = Math.max(max, a[i][j] + a[i + 1][j] + a[i][j + 1]);
+                if ((j + 2) < n) {
+                    max = Math.max(max, a[i][j] + a[i][j + 1] + a[i][j + 2]);
+                }
+
+                if ((i + 2) < n) {
+                    max = Math.max(max, a[i][j] + a[i + 1][j] + a[i + 2][j]);
+                }
+
+                if ((i + 1) < n && ((j + 1) < n)) {
+                    max = Math.max(max, a[i + 1][j] + a[i][j + 1] + a[i + 1][j + 1]);
+                    max = Math.max(max, a[i][j] + +a[i][j + 1] + a[i + 1][j + 1]);
+                    max = Math.max(max, a[i][j] + a[i + 1][j] + a[i + 1][j + 1]);
+                    max = Math.max(max, a[i][j] + a[i + 1][j] + a[i][j + 1]);
+                }
 
             }
         }
