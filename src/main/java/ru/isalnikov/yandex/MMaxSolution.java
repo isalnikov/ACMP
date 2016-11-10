@@ -1,8 +1,10 @@
 package ru.isalnikov.yandex;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
-import ru.isalnikov.acmp.acmp224.LimitedQueue;
+import java.util.PriorityQueue;
+
 
 /**
  *
@@ -132,5 +134,25 @@ public class MMaxSolution {
         array[right] = tmpleft;
 
     }
+    
+    public static class LimitedQueue  extends PriorityQueue<Integer>{
+   private final int limit;
+
+    public LimitedQueue(int limit , Comparator<Integer> comparator ) {
+        super(limit, comparator);
+        this.limit = limit;
+    }
+
+    @Override
+    public boolean add(Integer e) {
+        boolean added = super.add(e);
+        while (added && size() > limit) {
+            super.remove();
+        }
+        return added;
+    }
+   
+   
+}
 
 }
