@@ -1,4 +1,12 @@
 /**
+ * https://prog.kiev.ua/forum/index.php?topic=53.0
+ * 
+ * https://javasimplestudy.blogspot.ru/2012/08/part-1.html
+ * 
+ * http://ru.stackoverflow.com/questions/451589/%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B8-%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%B0-%D0%BD%D0%B0-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C-android-developer-%D0%A1%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D0%B9-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81-%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5-%D0%B3%D0%B4%D0%B5-%D1%8F
+ * 
+ * https://toster.ru/q/5783
+ * 
  * https://toster.ru/q/5783
  *
  * https://habrahabr.ru/sandbox/61205/
