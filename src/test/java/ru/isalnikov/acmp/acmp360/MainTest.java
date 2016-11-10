@@ -46,5 +46,34 @@ public class MainTest extends BaseTest {
         assertEquals("6", outContent.toString());
 
     }
+    @Test
+    public void test7() {
+        String data = "3\n"
+                + "1 1 1\n"
+                + "2 2 1\n"
+                + "2 1 0";
 
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main7.main(null);
+
+        assertEquals("6", outContent.toString());
+
+    }
+    @Test
+    public void test8() {
+        String data = "3\n"
+                + "1 1 1\n"
+                + "2 2 1\n"
+                + "2 1 0";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main8.main(null);
+
+        assertEquals("6", outContent.toString());
+
+    }
 }

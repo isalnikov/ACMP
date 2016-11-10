@@ -17,11 +17,17 @@ package ru.isalnikov.acmp.acmp360;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class Main2 {
+class Main7 {
 
     static byte[][] a;
     static int l;
+    static AtomicInteger max = new AtomicInteger(-301);
     
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in);
@@ -29,7 +35,7 @@ class Main2 {
             solve(in, out);
         }
     }
-    
+    static ExecutorService service =  Executors.newWorkStealingPool(4);
     static int D()
     {
         int m = -301;
@@ -38,14 +44,21 @@ class Main2 {
         {
             for (int j = 0; j < l; j++)
             {
-                int c = G(i, j);
-
-                if (c > m)
-                    m = c;
+                
+                
+              //  int c = G(i, j)
+              final int k = i;
+              final int n = j;
+                Future<Integer> f = service.submit(()->G(k, n));
+                try {
+                     max .set(Math.max(max.get(),    f.get()));
+                } catch (InterruptedException | ExecutionException e) {
+                }
+            
             }
         }
 
-        return m;
+        return max.get();
     }
 
 
