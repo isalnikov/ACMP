@@ -1,6 +1,7 @@
 package ru.isalnikov.yandex.sorts;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * http://www.ibm.com/developerworks/ru/library/l-data_structures_04/

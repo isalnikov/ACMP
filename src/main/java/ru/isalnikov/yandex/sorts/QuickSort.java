@@ -6,7 +6,6 @@
 package ru.isalnikov.yandex.sorts;
 
 import java.util.Arrays;
-import java.util.Collections;
 import static java.util.Collections.swap;
 import java.util.List;
 import java.util.Random;
