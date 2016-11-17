@@ -20,14 +20,13 @@ public class BannerSolution {
     public static void arraySolution() {
         Random r = new Random();
         int index = 100;
-        int[] list = new int[index];// в угоду наглядности в дебри линкедлистов лезть не будем
+        int[] list = new int[index];
         for (int i = 0; i < index; ++i) {
             list[i] = i;
         }
         //System.out.println(Arrays.toString(list));
-        /*логика алгоритма*/
         int number;
-        
+        /*логика алгоритма*/
         while (index > 0) {
             number = r.nextInt(index) ;
             --index;
