@@ -19,14 +19,13 @@ public class BannerSolution {
 
     public static void arraySolution() {
         Random r = new Random();
-        int size = 100;
-        int[] list = new int[size];// в угоду наглядности в дебри линкедлистов лезть не будем
-        for (int i = 0; i < size; ++i) {
+        int index = 100;
+        int[] list = new int[index];// в угоду наглядности в дебри линкедлистов лезть не будем
+        for (int i = 0; i < index; ++i) {
             list[i] = i;
         }
         //System.out.println(Arrays.toString(list));
         /*логика алгоритма*/
-        int index = size ;
         int number;
         
         while (index > 0) {
