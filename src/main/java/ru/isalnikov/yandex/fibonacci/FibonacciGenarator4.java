@@ -75,8 +75,11 @@ public class FibonacciGenarator4 {
     public static void main(String[] args) {
 
         LockFree lock = new LockFree();
-
-        lock.next();
+        for (int i = 0; i < 10; i++) {
+         
+            System.out.println(lock.next());
+        }
+        
     }
 
 }

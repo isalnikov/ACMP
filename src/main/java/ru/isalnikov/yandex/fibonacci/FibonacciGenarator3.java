@@ -65,8 +65,10 @@ public class FibonacciGenarator3 {
     public static void main(String[] args) {
 
         FineGrainedLock lock = new FineGrainedLock();
-
-        lock.next();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(lock.next());
+        }
+        
     }
 
 }
