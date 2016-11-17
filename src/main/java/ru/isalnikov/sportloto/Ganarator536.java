@@ -22,7 +22,7 @@ public class Ganarator536 {
                             for (int i5 = i4 + 1; i5 < a.length; i5++) {
                                 count++;
                                 String s = String.format("%d %d %d %d %d\n", a[i1], a[i2], a[i3], a[i4], a[i5]);
-                                writer.write(s);
+                               // writer.write(s);
                             }
                         }
                     }
