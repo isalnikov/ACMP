@@ -12,8 +12,9 @@ public class BannerSolution {
 
     public static void main(String[] args) {
 
-        linkedListSolution();
-        //arraySolution();
+        //linkedListSolution();
+        
+        arraySolution();
     }
 
     public static void arraySolution() {
@@ -47,7 +48,7 @@ public class BannerSolution {
         }
 
         System.out.println(list);
-        /*логика алгоритма*/
+
         int number;
         TreeSet<Integer> treeSet = new TreeSet<>();
         while (index > 0) {
