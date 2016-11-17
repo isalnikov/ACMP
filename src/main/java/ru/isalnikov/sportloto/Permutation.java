@@ -2,20 +2,31 @@ package ru.isalnikov.sportloto;
 
 public class Permutation {
 
-    private final int[] result;
+    private int[] result;
     private int n;
     private int k;
-    static  int count = 0;
+    private int count = 0;
 
     
     
     public Permutation(int n , int k) {
-        result = new int[k];
         this.n = n; 
         this.k = k; 
     }
 
+    public static Permutation getInstance(int n, int k) {
+        Permutation p = new Permutation(n, k);
+        p.run();
+        return p;
+    }
+
+    public int getCount() {
+        return count;
+    }
+    
     public void run(){
+        count = 0;
+        result = new int[k];
         iterate(n, k);
     }
     
@@ -38,19 +49,16 @@ public class Permutation {
     }
 
     public static void main(String... args) throws InterruptedException {
+        int n = 1;
         long start = System.currentTimeMillis();
         
-        for (int i = 0; i < 1; i++) {
-            Permutation p = new Permutation(49, 7);
-            p.run();
+        Permutation p = null;
+        for (int i = 0; i < n; i++) {
+         p = getInstance(49, 7);
 
         }
-        
-        
-        System.out.println("time " +(System.currentTimeMillis() - start)/1 + " ms");
-        System.out.println(count);
-        //exucutorSevice.shutdown();
-        //exucutorSevice.awaitTermination(2L, TimeUnit.SECONDS);
+        System.out.println("time " +(System.currentTimeMillis() - start)/n + " ms");
+        System.out.println(p.getCount());
         
     }
 }
