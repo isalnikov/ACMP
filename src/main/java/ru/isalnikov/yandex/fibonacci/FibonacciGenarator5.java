@@ -28,55 +28,36 @@ public class FibonacciGenarator5 {
         public T val();
     }
 
-    static class LockFree implements FibonacciGenerator<BigInteger> {
+    static class Immutable {
 
-        // Инкапсулируем состояние генератора в класс
-        private static class State {
+        private final BigInteger next;
+        // Текущее значение
+        public final BigInteger val;
 
-            final BigInteger next;
-            final BigInteger curr;
-
-            public State(BigInteger curr, BigInteger next) {
-                this.next = next;
-                this.curr = curr;
-            }
+        private Immutable(BigInteger next, BigInteger val) {
+            this.next = next;
+            this.val = val;
         }
 
-        // Сделаем состояние класса атомарным
-        private final AtomicReference<State> atomicState = new AtomicReference<>(
-                new State(BigInteger.ONE, BigInteger.ONE));
-
-        @Override
-        public BigInteger next() {
-            BigInteger value = null;
-            while (true) {
-                // сохраняем состояние класса 
-                State state = atomicState.get();
-                // то что возвращаем если удалось изменить состояние класса
-                value = state.curr;
-                // конструируем новое состояние
-                State newState = new State(state.next, state.curr.add(state.next));
-            // если за время пока мы конструировали новое состояние
-                // оно осталось прежним, то заменяем состояние на новое,
-                // иначе пробуем сконструировать еще раз
-                if (atomicState.compareAndSet(state, newState)) {
-                    break;
-                }
-            }
-            return value;
+        public Immutable next() {
+            return new Immutable(val.add(next), next);
         }
 
-        @Override
-        public BigInteger val() {
-            return atomicState.get().curr;
+        public static Immutable first() {
+            return new Immutable(BigInteger.ONE, BigInteger.ONE);
         }
+
     }
 
     public static void main(String[] args) {
 
-        LockFree lock = new LockFree();
+      Immutable immutable =  Immutable.first();
+        for (int i = 0; i < 10; i++) {
+            immutable = immutable.next();
+            System.out.println(immutable.val.toString());
+            
+        }
 
-        lock.next();
     }
 
 }

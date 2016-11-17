@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * корректно работать в многопоточной среде.
  *
  */
-public class FibonacciGenarator {
+public class FibonacciGenarator1 {
 
    static class FibonacciEntity {
 

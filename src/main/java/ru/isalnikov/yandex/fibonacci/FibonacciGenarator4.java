@@ -28,43 +28,53 @@ public class FibonacciGenarator4 {
         public T val();
     }
 
-    static class FineGrainedLock implements FibonacciGenerator<BigInteger> {
+    static class LockFree implements FibonacciGenerator<BigInteger> {
 
-        private final ReadWriteLock lock = new ReentrantReadWriteLock();
-        private BigInteger curr = BigInteger.ONE;
-        private BigInteger next = BigInteger.ONE;
+        // Инкапсулируем состояние генератора в класс
+        private static class State {
+
+            final BigInteger next;
+            final BigInteger curr;
+
+            public State(BigInteger curr, BigInteger next) {
+                this.next = next;
+                this.curr = curr;
+            }
+        }
+
+        // Сделаем состояние класса атомарным
+        private final AtomicReference<State> atomicState = new AtomicReference<>(
+                new State(BigInteger.ONE, BigInteger.ONE));
 
         @Override
         public BigInteger next() {
-            BigInteger result;
-            lock.writeLock().lock();
-            try {
-                // Вход другим потокам запрещен
-                result = curr;
-                curr = next;
-                next = result.add(next);
-                return result;
-            } finally {
-                lock.writeLock().unlock();
+            BigInteger value = null;
+            while (true) {
+                // сохраняем состояние класса 
+                State state = atomicState.get();
+                // то что возвращаем если удалось изменить состояние класса
+                value = state.curr;
+                // конструируем новое состояние
+                State newState = new State(state.next, state.curr.add(state.next));
+            // если за время пока мы конструировали новое состояние
+                // оно осталось прежним, то заменяем состояние на новое,
+                // иначе пробуем сконструировать еще раз
+                if (atomicState.compareAndSet(state, newState)) {
+                    break;
+                }
             }
+            return value;
         }
 
         @Override
         public BigInteger val() {
-            lock.readLock().lock();
-            try {
-            // При отпущенном write lock
-                // Допуст`им вход множества потоков
-                return curr;
-            } finally {
-                lock.readLock().unlock();
-            }
+            return atomicState.get().curr;
         }
     }
 
     public static void main(String[] args) {
 
-        FineGrainedLock lock = new FineGrainedLock();
+        LockFree lock = new LockFree();
 
         lock.next();
     }
