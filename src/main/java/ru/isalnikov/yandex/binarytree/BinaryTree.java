@@ -1,8 +1,9 @@
 /*
- *http://www.newthinktank.com/2013/03/binary-tree-in-java/
-
-https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0
+ * http://www.newthinktank.com/2013/03/binary-tree-in-java/
+ *
+ * https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0
  */
+
 package ru.isalnikov.yandex.binarytree;
 
 /**
@@ -30,12 +31,17 @@ public class BinaryTree {
         }
     }
 
-    public Node getNextByOrder(Node node) {
+    public Node getNextNodeByOrder(Node node) {
         if (node == null) {
             return null;
         }
         if (node.right != null) {
-            return node.right;
+            Node result = node.right;
+
+            if (result.left != null) {
+                return getNextNodeByOrder(result.left);
+            }
+            return result;
         }
 
         Node curr = root;
@@ -114,7 +120,7 @@ public class BinaryTree {
         System.out.println("Traversing tree front-to-back from location 7");
         binaryTree.printFrontToBack(root, 7);
 
-        binaryTree.getNextByOrder(root);
+        //binaryTree.getNextByOrder(root);
     }
 
 }

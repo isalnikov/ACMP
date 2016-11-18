@@ -49,7 +49,7 @@ public class Permutation {
     }
 
     public static void main(String... args) throws InterruptedException {
-        int n = 1;
+        int n = 10;
         long start = System.currentTimeMillis();
         
         Permutation p = null;
