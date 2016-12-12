@@ -1,7 +1,6 @@
 package ru.isalnikov.acmp.acmp678;
 
-import java.io.PrintWriter;
-import java.util.Scanner;
+
 
 /**
  * Шулер показывает следующий трюк. Он имеет три одинаковых наперстка. Под
@@ -26,6 +25,8 @@ import java.util.Scanner;
  *
  * @author Igor Salnikov
  */
+import java.io.PrintWriter;
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
