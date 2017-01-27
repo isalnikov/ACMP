@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ru.isalnikov.acmp.acmp49;
+package ru.isalnikov.acmp.acmp50;
 
 import java.io.ByteArrayInputStream;
 import static org.junit.Assert.assertEquals;
@@ -14,7 +9,7 @@ public class MainTest extends BaseTest {
 
     @Test
     public void test1() {
-        String data = "???\n"
+        String data = "abcabc\n"
                 + "abc";
 
         inContent = new ByteArrayInputStream(data.getBytes());
@@ -22,28 +17,14 @@ public class MainTest extends BaseTest {
 
         Main.main(null);
 
-        assertEquals("64", outContent.toString());
+        assertEquals("4", outContent.toString());
 
     }
 
     @Test
     public void test2() {
-        String data = "???\n"
-                + "000";
-
-        inContent = new ByteArrayInputStream(data.getBytes());
-        System.setIn(inContent);
-
-        Main.main(null);
-
-        assertEquals("1", outContent.toString());
-
-    }
-
-    @Test
-    public void test3() {
-        String data = "abc\n"
-                + "999";
+        String data = "abcabc\n"
+                + "acb";
 
         inContent = new ByteArrayInputStream(data.getBytes());
         System.setIn(inContent);
@@ -51,6 +32,34 @@ public class MainTest extends BaseTest {
         Main.main(null);
 
         assertEquals("0", outContent.toString());
+
+    }
+
+    @Test
+    public void test3() {
+        String data = "aaaaaaa\n"
+                + "aa";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main.main(null);
+
+        assertEquals("6", outContent.toString());
+
+    }
+
+    @Test
+    public void test4() {
+        String data = "aAaa8aaAa\n"
+                + "aAa";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main.main(null);
+
+        assertEquals("4", outContent.toString());
 
     }
 }
