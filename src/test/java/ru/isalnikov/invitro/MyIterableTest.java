@@ -7,10 +7,25 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 @RunWith(JUnit4.class)
 public class MyIterableTest {
 
+    
+    @Test
+    public void testSum() {
+
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
+
+        Integer ot = stream.filter(x -> x % 2 == 0)
+                .peek(System.out::println)
+                .reduce(0, (x, y) -> x + y);
+
+        System.out.println(ot);
+
+    }
+    
     @Test
     public void testGeneralBehavior() throws Exception {
         final AtomicInteger counter = new AtomicInteger(0);

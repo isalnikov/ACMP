@@ -5,15 +5,9 @@
  */
 package ru.isalnikov.yandex.sorts;
 
-import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Stack;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

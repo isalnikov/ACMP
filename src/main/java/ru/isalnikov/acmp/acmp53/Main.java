@@ -56,9 +56,7 @@ public class Main {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-
                 if (i * j % 5 == 0) {
-
                     map.get("BLUE").incrementAndGet();
                 } else if (i * j % 3 == 0) {
                     map.get("GREEN").incrementAndGet();
