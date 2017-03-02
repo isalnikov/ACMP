@@ -1,6 +1,10 @@
 package ru.isalnikov.acmp.acmp41;
 
 import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.function.IntSupplier;
+import java.util.stream.IntStream;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -18,6 +22,46 @@ public class MainTest extends BaseTest {
         Main.main(null);
 
         assertEquals("-20 9 14 ", outContent.toString());
+
+    }
+    @Test
+    public void test1n() throws Exception {
+        String data = "3\n"
+                + "9 -20 14";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        NewClass1.main(null);
+
+        assertEquals("-20 9 14 ", outContent.toString());
+
+    }
+
+    @Test
+    @Ignore
+    public void testbig() {
+
+        int max = 1_000_000;
+        IntSupplier supplier = () -> 1;
+        IntStream myStream = IntStream.generate(supplier);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(max);//10^6
+        sb.append("\n");//10^6
+
+        StringWriter sw = new StringWriter();
+        myStream.limit(max).forEach(sw::write);
+        String result = sw.toString();
+        String data = sb.toString() + result;
+
+//        String commaSeparatedNumbers = Arrays.stream(numbers)
+//    .mapToObj(Integer::toString)
+//    .collect(Collectors.joining(", "));
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals(result, outContent.toString());
 
     }
 

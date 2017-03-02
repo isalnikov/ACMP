@@ -2,6 +2,9 @@
 package ru.isalnikov.acmp.acmp54;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import ru.isalnikov.acmp.base.BaseTest;
@@ -46,5 +49,30 @@ public class MainTest extends BaseTest {
         assertEquals("-1 1", outContent.toString());
 
     }
+    
+    @Test
+    public void test3() {
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        IntStream stream = Arrays.stream(arr).flatMapToInt(x -> Arrays.stream(x));
+        //stream.forEachOrdered(System.err::println);
+
+        int sum = 0;
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            sum += i;
+        }
+        System.err.println(sum);
+
+        System.err.println(IntStream.range(0, Integer.MAX_VALUE).sum());
+        System.err.println(IntStream.rangeClosed(0, Integer.MAX_VALUE).sum());
+        System.err.println(LongStream.range(0, Integer.MAX_VALUE).sum());
+        System.err.println(LongStream.rangeClosed(0, Integer.MAX_VALUE).sum());
+        
+        int s = 0;
+        for (long i = 0; i <= Integer.MAX_VALUE; i++) {
+            s += i;
+        }
+        System.err.println(s);
+    }
+    
 
 }

@@ -15,7 +15,6 @@ package ru.isalnikov.acmp.acmp17;
  */
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Main1 {
 

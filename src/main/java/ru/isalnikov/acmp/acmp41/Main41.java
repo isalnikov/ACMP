@@ -19,30 +19,46 @@ package ru.isalnikov.acmp.acmp41;
  *
  *
  */
-class Main {
+import java.util.*;
+import java.util.stream.StreamSupport;
 
-    public static void main(String[] x) throws Exception {
-        int[] a = new int[201];
-        int b = 0, v = 0, n = 2;
-        while (b > -1) {
-            b = System.in.read();
-            if (n < 2 || 0 == (n = b - 10)) {
-                if (b > 45) {
-                    v *= 10;
-                    v += b - 48;
-                    n |= 1;
-                } else if (b == 45) {
-                    n = -1;
-                } else if (n != 0) {
-                    a[v * n + 100]++;
-                    v = n = 0;
-                }
-            }
-        }
-        while (b++ < 200) {
-            while (a[b]-- > 0) {
-                System.out.print(b - 100 + " ");
-            }
+class Main41 {
+
+ 
+
+
+    
+    public static void main(String[] args) {
+     
+            
+            
+               
+            StreamSupport.stream(Spliterators.spliteratorUnknownSize(
+                    new Iterator<String>() {
+                        int n = 1;
+
+                        @Override
+                        public boolean hasNext() {
+                            return n > 0;
+                        }
+
+                        @Override
+                        public String next() {
+                            String s = "";
+                            try {
+                                for (; (n = System.in.read()) > -1;) {
+                                    if (n > 32) {
+                                        s += (char) n;
+                                    } else if (s != "") {
+                                        break;
+                                    }
+                                }
+                            } catch (Exception e) {
+                            }
+                            return s;
+                        }
+                    }, 16), false).skip(1).filter(b -> b != "").mapToInt(Integer::parseInt).sorted().forEach(b -> System.out.print(b + " "));
+            
         }
     }
-}
+

@@ -131,4 +131,30 @@ public class MainTest extends BaseTest {
         assertEquals("5", outContent.toString());
 
     }
+
+    @Test
+    public void test11() {
+        String data = "1\n"
+                + "1";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("1", outContent.toString());
+
+    }
+
+    @Test
+    public void test08() {
+        String data = "16\n"
+                + "1 2 3 1 2 3 1 2 3 1 2 3 1 2 4 1";
+
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+
+        Main.main(null);
+
+        assertEquals("15", outContent.toString());
+
+    }
 }

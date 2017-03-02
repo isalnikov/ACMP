@@ -1,0 +1,156 @@
+package ru.isalnikov.sportloto.completablefuture;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import ru.isalnikov.annotation.Annotations;
+import ru.isalnikov.annotation.Annotations.Bad;
+import ru.isalnikov.annotation.Annotations.Good;
+import ru.isalnikov.annotation.Annotations.Ugly;
+
+public class NewMainTest {
+
+    public NewMainTest() {
+    }
+
+    @Test
+    public void testFutureGetNow() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Long> future = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenApply(r -> r + 2017);
+
+        System.out.println(future.getNow(-1L));
+        assertEquals(future.get(), future.getNow(-1L));
+
+    }
+
+    @Test
+    public void testCompletableFutureVoid() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Void> future = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenApply(r -> r + 2017)
+                .thenAccept(System.out::println);
+
+        System.out.println(future.get());
+
+    }
+
+    @Test
+    public void testCompletableFutureExceptionally() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Void> f = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenApply(r -> r + 2017)
+                //.thenCombineAsync(r -> r + 2017)
+
+                .thenAccept(System.out::println);
+
+        // .exceptionally(Throwable::printStackTrace);
+    }
+
+    @Test
+    public void testCompletableFutureExceptionallyRt() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Void> f = new CompletableFuture<>();
+
+        f.completeExceptionally(new RuntimeException("RuntimeException 1"));
+
+        f.exceptionally(e -> {
+            System.out.println("RuntimeException 2");
+            return null;
+        });
+
+        f.thenApply(Function.identity()).exceptionally(e -> {
+            System.out.println("RuntimeException 3");
+            return null;
+        });
+
+        f.get();
+    }
+
+    @Test
+    public void testCompletableFutureReduce() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Void> future = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenCombine(CompletableFuture.supplyAsync(() -> 2017), Math::min)
+                .thenAccept(System.out::println);
+
+    }
+
+    @Test
+    @Bad // CompletableFuture<CompletableFuture<Long>> заменить это 
+    public void testCompletableFutureFaltMapBad() throws InterruptedException, ExecutionException {
+        CompletableFuture<CompletableFuture<Long>> cff = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenApply(x -> CompletableFuture.supplyAsync(() -> x + 2017));
+    }
+
+    @Test
+    @Good
+    public void testCompletableFutureFaltMapGood() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Long> future = CompletableFuture
+                .supplyAsync(() -> 42L)
+                .thenCompose(x -> CompletableFuture.supplyAsync(() -> x + 2017));
+
+    }
+
+    @Test
+    @Good //  нету throws InterruptedException, ExecutionException 
+    public void testCompletableFutureJoin() {
+
+        Stream<Integer> stream = Stream.of(1, 2, 3)
+                .map(i -> CompletableFuture.supplyAsync(() -> i))
+                .map(CompletableFuture::join);
+
+        stream.forEach(System.out::println);
+
+    }
+
+    @Test
+    @Good //  нету throws InterruptedException, ExecutionException 
+    public void testCompletableFutureParallelJoin() {
+
+        Stream<Integer> stream = Stream.of(1, 2, 3)
+                .parallel()
+                .map(i -> CompletableFuture.supplyAsync(() -> i))
+                .map(CompletableFuture::join);
+
+        stream.forEach(System.out::println);
+
+    }
+
+    @Test
+    @Ugly 
+     //ForkJoinPool(1); GOOD!!!  
+    // deadlock if
+    //NOT Executors.newSingleThreadExecutor();
+    public void testCompletableFutureParallelJoinUgly() throws InterruptedException, ExecutionException {
+
+      //  ExecutorService es = new ForkJoinPool(1);
+        ExecutorService es = Executors.newSingleThreadExecutor();
+
+        Future<?> task = es.submit(() -> {
+            try {
+                es.submit(() -> System.out.println("1")).get();
+
+            } catch (InterruptedException | ExecutionException e) {
+                System.err.println(e);
+            }
+        });
+
+        task.get();
+
+    }
+
+}

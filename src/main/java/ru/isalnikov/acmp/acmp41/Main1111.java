@@ -19,29 +19,22 @@ package ru.isalnikov.acmp.acmp41;
  *
  *
  */
-class Main {
+import java.util.*;
 
-    public static void main(String[] x) throws Exception {
-        int[] a = new int[201];
-        int b = 0, v = 0, n = 2;
-        while (b > -1) {
-            b = System.in.read();
-            if (n < 2 || 0 == (n = b - 10)) {
-                if (b > 45) {
-                    v *= 10;
-                    v += b - 48;
-                    n |= 1;
-                } else if (b == 45) {
-                    n = -1;
-                } else if (n != 0) {
-                    a[v * n + 100]++;
-                    v = n = 0;
-                }
+public class Main1111 {
+
+    public static void main(String[] s) {
+        int a[] = new int[201];
+        try (Scanner i = new Scanner(System.in);) {
+            for (int j = i.nextInt(); j-- > 0;) {
+                a[i.nextInt() + 100]++;
             }
+        } catch (Exception e) {
         }
-        while (b++ < 200) {
-            while (a[b]-- > 0) {
-                System.out.print(b - 100 + " ");
+        for (int i = -1; i++ < 200;) {
+            for (int j = 0; j++ < a[i];) {
+                System.out.print(i - 100);
+                System.out.print(' ');
             }
         }
     }
