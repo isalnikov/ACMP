@@ -4,13 +4,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import ru.isalnikov.annotation.Annotations;
 import ru.isalnikov.annotation.Annotations.Bad;
 import ru.isalnikov.annotation.Annotations.Good;
 import ru.isalnikov.annotation.Annotations.Ugly;
@@ -131,13 +132,13 @@ public class NewMainTest {
     }
 
     @Test
-    @Ugly 
-     //ForkJoinPool(1); GOOD!!!  
+    @Ugly
+    //ForkJoinPool(1); GOOD!!!  
     // deadlock if
     //NOT Executors.newSingleThreadExecutor();
     public void testCompletableFutureParallelJoinUgly() throws InterruptedException, ExecutionException {
 
-      //  ExecutorService es = new ForkJoinPool(1);
+        //  ExecutorService es = new ForkJoinPool(1);
         ExecutorService es = Executors.newSingleThreadExecutor();
 
         Future<?> task = es.submit(() -> {
@@ -151,6 +152,68 @@ public class NewMainTest {
 
         task.get();
 
+    }
+
+    @Test
+    @Good
+
+    public void testGoodCompletableFuture() throws InterruptedException, ExecutionException {
+
+        CompletableFuture<Long> future = getValue42();
+
+        System.out.println(future.get());
+
+    }
+
+    /**
+     * ТODO если будет ошибка то вернктся 1 промис ,отрбаоатет но вернет все
+     * раврно 1 раз
+     *
+     * региональный таск не отменяется -
+     *
+     * @return
+     */
+    ScheduledExecutorService es = Executors.newScheduledThreadPool(1);
+
+    public CompletableFuture<Long> getValue42() {
+        CompletableFuture<Long> promise = new CompletableFuture<>();
+
+        // Эта такс на канцеляется 
+        CompletableFuture.runAsync(() -> {
+            try {
+                //Thread.sleep(20000);
+                promise.complete(new Long(42));
+            } catch (Exception e) {
+                promise.completeExceptionally(e);
+            }
+
+        });
+
+        es.schedule(() -> promise.completeExceptionally(new TimeoutException()), 1, TimeUnit.SECONDS);
+
+        return promise;
+    }
+
+    public CompletableFuture<Long> getValue42Timeout() {
+        CompletableFuture<Long> promise = new CompletableFuture<>();
+
+        // Эта такс на канцеляется
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            try {
+                //Thread.sleep(20000);
+                promise.complete(new Long(42));
+            } catch (Exception e) {
+                promise.completeExceptionally(e);
+            }
+
+        });
+
+        es.schedule(() -> {
+            future.cancel(true);
+            promise.completeExceptionally(new TimeoutException());
+        }, 1, TimeUnit.SECONDS);
+
+        return promise;
     }
 
 }
