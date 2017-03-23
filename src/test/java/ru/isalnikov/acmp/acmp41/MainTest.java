@@ -13,7 +13,7 @@ import ru.isalnikov.acmp.base.BaseTest;
 public class MainTest extends BaseTest {
 
     @Test
-    public void test1() {
+    public void test1() throws Exception {
         String data = "3\n"
                 + "9 -20 14";
 
@@ -39,7 +39,7 @@ public class MainTest extends BaseTest {
 
     @Test
     @Ignore
-    public void testbig() {
+    public void testbig() throws Exception {
 
         int max = 1_000_000;
         IntSupplier supplier = () -> 1;
