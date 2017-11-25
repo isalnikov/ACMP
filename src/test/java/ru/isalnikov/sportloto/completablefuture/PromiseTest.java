@@ -16,9 +16,9 @@ import ru.isalnikov.annotation.Annotations.Bad;
 import ru.isalnikov.annotation.Annotations.Good;
 import ru.isalnikov.annotation.Annotations.Ugly;
 
-public class NewMainTest {
+public class PromiseTest {
 
-    public NewMainTest() {
+    public PromiseTest() {
     }
 
     @Test
