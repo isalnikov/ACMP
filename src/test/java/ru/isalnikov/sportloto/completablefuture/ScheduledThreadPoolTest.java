@@ -44,14 +44,21 @@ public class ScheduledThreadPoolTest {
     @Test
     public void nunScheduledThreadPoolTest() throws InterruptedException {
 
-        
         DateTimeFormatter formatter
                 = DateTimeFormatter
                         .ofLocalizedTime(FormatStyle.MEDIUM);
-        
+
         HashMap<String, ScheduledFuture<?>> futures = new HashMap<>();
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+
+       final AtomicInteger u = new AtomicInteger(0);
+       
+        
+        for (int i = 0; i < 10; i++) {
+            Runnable task = () -> System.out.println("task: " + u.incrementAndGet() +"  "+  Thread.currentThread().getName() + " " + LocalTime.now());
+            executor.scheduleWithFixedDelay(task, 0, 100, TimeUnit.MILLISECONDS);
+        }
 
         AtomicInteger atomicInteger = new AtomicInteger(0);
 
@@ -60,13 +67,11 @@ public class ScheduledThreadPoolTest {
         Runnable task3 = () -> {
             System.out.println("task3: " + Thread.currentThread().getName() + " " + LocalTime.now().format(formatter));
 
-            
-            
             if (atomicInteger.get() > 3) {
                 futures.get("task3").cancel(false);
                 System.out.println("task3: " + Thread.currentThread().getName() + " DONE");
             }
-            
+
             atomicInteger.incrementAndGet();
         };
 
