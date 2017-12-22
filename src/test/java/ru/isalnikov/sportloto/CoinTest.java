@@ -80,7 +80,7 @@ public class CoinTest {
         long startTime = System.currentTimeMillis();
 
         final int tossCount = 8;
-        final int faceCount = 3;
+        final int faceCount = 4;
 
         int total = 0;
 

@@ -13,6 +13,7 @@ import java.util.function.IntConsumer;
 public class Coin {
 
     public static final int NUMBER = 100_000_000;
+    public static final int count = 3;
 
     public static int runner() {
 
@@ -25,10 +26,10 @@ public class Coin {
     }
 
     public static int sumBitsCounter(int i) {
-        int d = Integer.bitCount(i & 0xff000000) == 3 ? 1 : 0;
-        int c = Integer.bitCount(i & 0xff0000) == 3 ? 1 : 0;
-        int b = Integer.bitCount(i & 0xff00) == 3 ? 1 : 0;
-        int a = Integer.bitCount(i & 0xff) == 3 ? 1 : 0;
+        int d = Integer.bitCount(i & 0xff000000) == count ? 1 : 0;
+        int c = Integer.bitCount(i & 0xff0000) == count ? 1 : 0;
+        int b = Integer.bitCount(i & 0xff00) == count ? 1 : 0;
+        int a = Integer.bitCount(i & 0xff) == count ? 1 : 0;
         return a + b + c + d;
 
     }
