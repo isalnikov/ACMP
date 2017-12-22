@@ -1,10 +1,6 @@
 package ru.isalnikov.sportloto;
 
-import java.util.OptionalInt;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.IntBinaryOperator;
-import java.util.function.IntConsumer;
 
 /**
  *
@@ -21,7 +17,7 @@ public class Coin {
                 .current()
                 .ints()
                 .limit(NUMBER / 4)
-                .reduce(0, (int left, int right) -> left + sumBitsCounter(right));
+                .reduce(0, (left, right) -> left + sumBitsCounter(right));
         return res;
     }
 
