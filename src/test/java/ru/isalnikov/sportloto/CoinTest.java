@@ -80,7 +80,7 @@ public class CoinTest {
         long startTime = System.currentTimeMillis();
 
         final int tossCount = 8;
-        final int faceCount = 4;
+        final int faceCount = 3;
 
         int total = 0;
 
@@ -89,6 +89,7 @@ public class CoinTest {
 
             for (int j = 0; j < tossCount; j++) {
                 faceNum += ThreadLocalRandom.current().nextInt(2);
+             //   if(faceNum>faceCount) break;
             }
             //faceNum += random.nextInt(2);
 

@@ -14,6 +14,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 import ru.isalnikov.sportloto.Coin;
 
 /**
@@ -38,6 +39,8 @@ public class CoinTest {
         Options opt = new OptionsBuilder()
                 .include(CoinTest.class.getSimpleName())
                 .forks(1)
+                .threads(2)
+                .measurementTime(TimeValue.milliseconds(100))
                 .build();
 
         new Runner(opt).run();

@@ -13,20 +13,36 @@ public class Coin {
 
     public static int runner() {
 
-        int res = ThreadLocalRandom
-                .current()
-                .ints()
-                .limit(NUMBER / 4)
-                .reduce(0, (left, right) -> left + sumBitsCounter(right));
+        int res = 0;
+        for (int i = 0; i < NUMBER / 4; i++) {
+            res += sumBitsCounter(ThreadLocalRandom.current().nextInt());
+
+        }
+
+//        int res = ThreadLocalRandom
+//                .current()
+//                .ints()
+//                .limit(NUMBER / 4)
+//                .reduce(0, (left, right) -> left + sumBitsCounter(right));
         return res;
     }
 
     public static int sumBitsCounter(int i) {
-        int d = Integer.bitCount(i & 0xff000000) == count ? 1 : 0;
-        int c = Integer.bitCount(i & 0xff0000) == count ? 1 : 0;
-        int b = Integer.bitCount(i & 0xff00) == count ? 1 : 0;
-        int a = Integer.bitCount(i & 0xff) == count ? 1 : 0;
-        return a + b + c + d;
+        int result = 0;
+
+        if (count == Integer.bitCount(i & 0xff000000)) {
+            ++result;
+        }
+        if (count == Integer.bitCount(i & 0x00ff0000)) {
+            ++result;
+        }
+        if (count == Integer.bitCount(i & 0x0000ff00)) {
+            ++result;
+        }
+        if (count == Integer.bitCount(i & 0x000000ff)) {
+            ++result;
+        }
+        return result;
 
     }
 }
