@@ -216,4 +216,11 @@ public class PromiseTest {
         return promise;
     }
 
+    
+    @Test
+    public void testGetValue42Timeout() throws InterruptedException, ExecutionException{
+        System.out.println(getValue42().get());
+        System.out.println(getValue42Timeout().get());
+    }
+    
 }
