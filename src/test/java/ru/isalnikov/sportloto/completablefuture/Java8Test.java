@@ -7,15 +7,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 
 /**
  *
  * @author Igor Salnikov igor.salnikov@stoloto.ru
  */
+@Log4j2
 public class Java8Test {
+    
+    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Java8Test.class);
 
     @FunctionalInterface
     interface Converter<F, T> {
@@ -75,7 +79,7 @@ public class Java8Test {
     }
 
     @Test
-    public void testMap() {
+    public void testMap() throws InterruptedException {
 
 //        CompletableFuture[] futures = findPricesStream("myPhone")
 //.map(f -> f.thenAccept(System.out::println))
@@ -91,19 +95,21 @@ public class Java8Test {
         List<Person> persons = Arrays.asList(new Person("1", "2"), new Person("3", "4"));
 
         CompletableFuture[] futures
-                = 
-                        persons.stream()
+                = persons.stream()
                         .map(p -> CompletableFuture.supplyAsync(
                         () -> renamePerson((Person) p), es))
                         .map(f -> f.thenAccept(System.out::println))
                         .toArray(size -> new CompletableFuture[size]);
 
         CompletableFuture.allOf(futures).join();
-        
-        
-        
-        
+
         persons.stream().forEach(p -> System.out.println(p.fullName));
+
+        es.shutdown();
+        
+        final boolean done = es.awaitTermination(1, TimeUnit.MINUTES);
+       
+       log.info("Все ли письма были отправлены? {}", done);
 
     }
 
