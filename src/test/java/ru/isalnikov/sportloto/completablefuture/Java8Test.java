@@ -81,7 +81,7 @@ public class Java8Test {
     @Test
     public void testMap() throws InterruptedException {
 
-//        CompletableFuture[] futures = findPricesStream("myPhone")
+//CompletableFuture[] futures = findPricesStream("myPhone")
 //.map(f -> f.thenAccept(System.out::println))
 //.toArray(size -> new CompletableFuture[size]);
 //CompletableFuture.allOf(futures).join();
