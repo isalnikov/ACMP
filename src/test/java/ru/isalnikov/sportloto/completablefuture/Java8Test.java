@@ -112,5 +112,20 @@ public class Java8Test {
        log.info("Все ли письма были отправлены? {}", done);
 
     }
+    
+    @Test
+    public void testMapJoin() {
+        List<Integer> list = Arrays.asList(10, 20, 30, 40);
+        list.stream()
+               //.map(data -> CompletableFuture.supplyAsync(() -> getNumber(data)))
+               .map(data -> CompletableFuture.supplyAsync(() -> data))
+               .map(compFuture -> compFuture.thenApply(n -> n * n))
+               .map(t -> t.join())
+               .forEach(s -> System.out.println(s));
+    }
+
+    private static int getNumber(int a) {
+        return a * a;
+    }
 
 }
