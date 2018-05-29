@@ -102,5 +102,5 @@ public class CoinTest {
 
         System.out.println(String.format("Result %4.8f time : %s  ms", (double) total / (NUMBER * 1.0), execTime));
     }
-
+     
 }
