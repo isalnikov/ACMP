@@ -1,13 +1,11 @@
 package ru.isalnikov.sportloto;
 
 
-//import com.wizzardo.tools.misc.TextTools;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 /**
  * https://github.com/wizzardo/highloadcup/blob/master/src/main/java/ru/highloadcup/App.java
