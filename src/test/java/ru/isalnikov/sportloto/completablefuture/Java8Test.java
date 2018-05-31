@@ -1,16 +1,13 @@
 package ru.isalnikov.sportloto.completablefuture;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.*;
+import java.util.function.Consumer;
 
 /**
  *
