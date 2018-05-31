@@ -30,7 +30,6 @@ public class Sobes {
             try {
                 s.m1();
             } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         }).start();
 
@@ -38,5 +37,5 @@ public class Sobes {
             s.m2();
         }).start();
     }
-
+    
 }

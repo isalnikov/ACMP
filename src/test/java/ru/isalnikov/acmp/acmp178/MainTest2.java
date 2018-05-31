@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.function.Consumer;
 import static java.util.function.Function.identity;
 import java.util.stream.Collectors;
 import static java.util.stream.Collectors.collectingAndThen;
@@ -26,6 +27,9 @@ import static org.junit.Assert.*;
 
 public class MainTest2 {
 
+    
+    Consumer<String> out = System.out::println;
+    
     @Test
     public void test5() {
 

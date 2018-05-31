@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" shutdownHook="disable">
+    <Properties>
+        <Property name="log-path">/tmp/log/load_test</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyMMdd HH:mm:ss} [%-5level] [%-21t] [%X{id}] [%X{username}] %c{1}:%m%n" /> 
+        </Console>
+        <RollingFile name="RollingFile" fileName="${log-path}/info.log" immediateFlush="false" append="false" filePattern="${log-path}/-%d{yyyy-MM-dd}-%i.log.zip">
+            <PatternLayout pattern="%d{yyMMdd HH:mm:ss} [%-5level] [%-21t] [%X{id}] [%X{username}] %c{1} - %msg%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy fileIndex = "min" max="10" compressionLevel = "5"/>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+       
+        <Logger name="ru.isalnikov.echoserver" level="INFO"/>
+       
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="RollingFile"/>-->
+        </Root>
+    </Loggers>
+</Configuration>

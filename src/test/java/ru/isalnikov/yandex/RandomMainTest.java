@@ -113,6 +113,13 @@ public class RandomMainTest {
         assertTrue(equals(value, 1.0));
 
     }
+      @Test
+     public void testStringFormat() {
+         System.out.println(String.format("%012d", Integer.parseInt(Integer.toBinaryString(1))));
+         System.out.println(String.format("%012d", 123));
+     }
+    
+    
 
     /**
      * Test of rand3_1 method, of class RandomMain.
