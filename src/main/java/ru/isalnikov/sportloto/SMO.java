@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 public class SMO {
 
     public static final int TERMINAL_COUNT = 500;
-    public static final int TICKETS = 5;
-    public static final int TPS = 30;
-    
-   public static final  List<Long> average = new ArrayList<>();
+    public static final int TICKETS = 3;
+    public static final int TPS = 5;
+
+    public static final List<Long> average = new ArrayList<>();
 
     static class Terminal {
 
@@ -62,7 +62,6 @@ public class SMO {
 
         Random random = new Random();
         List<Terminal> list = new ArrayList<>();
-       
 
         for (int i = 0; i < TERMINAL_COUNT; i++) {
             list.add(new Terminal(i, TICKETS));
@@ -71,15 +70,12 @@ public class SMO {
         while (list.size() > 0) {
             Thread.sleep(1000);
 
-            for (int i = 0; i < TPS; i++) {
-                if (list.isEmpty()) {
-                    continue;
-                }
+            int max = Math.min(TPS, list.size());
+
+            for (int i = 0; i < max; i++) {
+
                 int id = random.nextInt(list.size());
 
-                if (list.isEmpty() || id > list.size()) {
-                    continue;
-                }
                 Terminal terminal = list.get(id);
 
                 if (terminal.sale()) {
@@ -90,7 +86,7 @@ public class SMO {
         }
 
         LongSummaryStatistics s = average.stream().collect(Collectors.summarizingLong(Long::intValue));
-        System.out.println(String.format( "TERMINAL_COUNT =  %s ; TICKETS = %s ; TPS = %s", TERMINAL_COUNT ,TICKETS , TPS));
+        System.out.println(String.format("TERMINAL_COUNT = %s ; TICKETS = %s ; TPS = %s", TERMINAL_COUNT, TICKETS, TPS));
         System.out.println(s);
 
     }
