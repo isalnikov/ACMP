@@ -90,6 +90,7 @@ public class SMO {
         }
 
         LongSummaryStatistics s = average.stream().collect(Collectors.summarizingLong(Long::intValue));
+        System.out.println(String.format( "TERMINAL_COUNT =  %s ; TICKETS = %s ; TPS = %s", TERMINAL_COUNT ,TICKETS , TPS));
         System.out.println(s);
 
     }
