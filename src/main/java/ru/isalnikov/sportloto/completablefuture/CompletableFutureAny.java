@@ -16,11 +16,11 @@ import java.util.stream.Stream;
  */
 public class CompletableFutureAny {
     
-   public static ExecutorService pool = Executors.newFixedThreadPool(50);
+   public static ExecutorService pool = Executors.newFixedThreadPool(9);
 
     public static int getValue() {
         int time = ThreadLocalRandom.current().nextInt(1000);
-        System.out.println(String.format("Thread  %s; time = %s ms", Thread.currentThread().getName(), time));
+        System.out.println(String.format("Thread  %s; time = %03d ms", Thread.currentThread().getName(), time));
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -41,7 +41,7 @@ public class CompletableFutureAny {
 
         Supplier<CompletableFuture<Integer>> scf = () -> CompletableFuture.supplyAsync(() -> getValue(),pool);
 
-        CompletableFuture[] lst = Stream.generate(scf).limit(10).toArray(CompletableFuture[]::new);
+        CompletableFuture[] lst = Stream.generate(scf).limit(3).toArray(CompletableFuture[]::new);
 
         System.out.println(CompletableFuture.anyOf(lst).get());
         
