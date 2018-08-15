@@ -41,7 +41,7 @@ public class CompletableFutureAny {
 
         Supplier<CompletableFuture<Integer>> scf = () -> CompletableFuture.supplyAsync(() -> getValue(),pool);
 
-        CompletableFuture[] lst = Stream.generate(scf).limit(3).toArray(CompletableFuture[]::new);
+        CompletableFuture[] lst = Stream.generate(scf).limit(9).toArray(CompletableFuture[]::new);
 
         System.out.println(CompletableFuture.anyOf(lst).get());
         
