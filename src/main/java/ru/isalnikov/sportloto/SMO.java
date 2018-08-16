@@ -1,8 +1,6 @@
 package ru.isalnikov.sportloto;
 
-import java.time.chrono.ThaiBuddhistChronology;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.LongSummaryStatistics;
 import java.util.Random;
