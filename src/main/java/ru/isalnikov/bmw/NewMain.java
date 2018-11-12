@@ -5,7 +5,12 @@ import java.util.Set;
 import static java.util.stream.Collectors.toList;
 
 /**
- *
+ * if we give two strings ? could yoe determine if they share a common substring? 
+ * Don't foget that a substring may be as small as one character. For example  the worlds "a" , "and"  "art" share the common substring "a" 
+ * 
+ The  words "be" and "cat" do not share a substring/
+ * Ready ti work out the answer ?
+ * 
  * @author Igor Salnikov igor.salnikov@stoloto.ru
  */
 public class NewMain {
