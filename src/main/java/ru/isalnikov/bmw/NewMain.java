@@ -23,6 +23,7 @@ public class NewMain {
     }
 
     public static String twoStrings(String s1, String s2) {
+        
         Set<Character> set1 = new HashSet(s1.chars().mapToObj(c -> (char) c).collect(toList()));
 
         char[] chars = s2.toCharArray();
