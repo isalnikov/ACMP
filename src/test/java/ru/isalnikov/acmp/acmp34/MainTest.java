@@ -18,7 +18,7 @@ public class MainTest extends BaseTest {
         inContent = new ByteArrayInputStream(data.getBytes());
         System.setIn(inContent);
 
-        Main.main(null);
+        Main1.main(null);
 
         assertEquals("NO", outContent.toString());
 
@@ -32,9 +32,51 @@ public class MainTest extends BaseTest {
         inContent = new ByteArrayInputStream(data.getBytes());
         System.setIn(inContent);
 
-        Main.main(null);
+        Main1.main(null);
 
         assertEquals("YES", outContent.toString());
+
+    }
+    
+    @Test
+    public void test3() {
+        String data = "5 2\n"
+                + "17371";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main1.main(null);
+
+        assertEquals("NO", outContent.toString());
+
+    }
+    
+    @Test
+    public void test4() {
+        String data = "5 2\n"
+                + "11111";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main1.main(null);
+
+        assertEquals("YES", outContent.toString());
+
+    }
+    
+    @Test
+    public void test5() {
+        String data = "10 3\n"
+                + "1432318920";
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main1.main(null);
+
+        assertEquals("NO", outContent.toString());
 
     }
 
