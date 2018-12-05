@@ -10,12 +10,12 @@ package ru.isalnikov.sportloto.pazzle;
  * @author i.salnikov
  */
  class Child extends Base {
-  //  @Override
+    //@Override
     private void print() {
         System.out.println("2");
     }
     public static void main(String[] args) {
         Base obj = new Child ();
-    //    obj.print();
+       // obj.print();
     }
 }

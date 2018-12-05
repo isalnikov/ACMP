@@ -1,6 +1,10 @@
 package ru.isalnikov.sportloto.streamapi;
 
 import java.util.Optional;
+import ru.isalnikov.annotation.Annotations;
+import ru.isalnikov.annotation.Annotations.Good;
+import ru.isalnikov.annotation.Annotations.Normal;
+import ru.isalnikov.annotation.Annotations.Ugly;
 
 /**
  *
@@ -8,6 +12,7 @@ import java.util.Optional;
  */
 public class OptionalTest {
 
+    @Ugly
     Optional<Integer> sum(Optional<Integer> x, Optional<Integer> y) {
 
         Optional<Integer> result = Optional.empty();
@@ -23,12 +28,12 @@ public class OptionalTest {
         }
         return result;
     }
-    
+    @Good
     Optional<Integer> sum1(Optional<Integer> x, Optional<Integer> y) {
       return x.flatMap(x0 -> y.map(y0 -> x0 + y0));
     }
     
-    
+    @Normal
     Optional<Integer> sum2(Optional<Integer> x, Optional<Integer> y) {
      if (x.isPresent() || y.isPresent()) {
             return Optional.of(x.orElse(0) + y.orElse(0));

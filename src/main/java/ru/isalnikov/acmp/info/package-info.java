@@ -5,4 +5,7 @@ package ru.isalnikov.acmp.info;
  * 
  * https://www.youtube.com/playlist?list=PLIEv2lyiPlJQuuDEnAPfa4iybE7GU62h4
  * 
+ * 
+ * https://vk.com/video358860601_456239721
+ * 
  */

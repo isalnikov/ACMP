@@ -12,4 +12,7 @@ public class Annotations {
 
     public @interface Ugly {
     }
+    
+    public @interface Normal {
+    }
 }

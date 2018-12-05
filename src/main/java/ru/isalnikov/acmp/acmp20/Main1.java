@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in);
@@ -29,43 +29,31 @@ public class Main {
     }
 
     private static void solve(Scanner in, PrintWriter out) {
-        int N = Integer.parseInt(in.nextLine().trim());
-        int[] array = IntStream.range(0, N).map(i -> in.nextInt()).toArray();
+         int n = Integer.parseInt(in.nextLine().trim());
+         int[] array = IntStream.range(0, n).map(i -> in.nextInt()).toArray();
 
-        int maxLen = -1;
-
-        int last = 0;
-        int sign = 0;
-        int r = 0;
-        for (int i = 0; i < N; ++i) {
-            int v = array[i];
-            if (i == 0) {
-                r += 1;
-            } else if (i == 1) {
-                sign = last < v ? -1 : 1;
-                r += 1;
+        int cur =  array[0];
+        int prev = array[0];
+        int prevPrev = array[0];
+        int len = 1;
+        int maxLen = 1;
+        int j = 0;
+        for (int i = 2; i <= n; i++) {
+            prevPrev = prev;
+            prev = array[0];
+            cur = array[j++];
+            if ((prev > cur && prev > prevPrev) || (prev < cur && prev < prevPrev)) {
+                len++;
+            } else if (prev != cur) {
+                len = 2;
             } else {
-                if (sign == -1 && last > v) {
-                    sign = 1;
-                    r += 1;
-                } else if (sign == 1 && last < v) {
-                    sign = -1;
-                    r += 1;
-                } else {
-                    if (r > maxLen) {
-                        maxLen = r;
-                    }
-                    r = 2;
-                    sign = last < v ? -1 : 1;
-                }
+                len = 1;
             }
-            last = v;
-        }
-        if (r > maxLen) {
-            maxLen = r;
-        }
 
+            maxLen = Math.max(maxLen, len);
+        }
         out.print(maxLen);
         out.flush();
+
     }
 }

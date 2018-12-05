@@ -32,7 +32,7 @@ public class Main {
         int N = Integer.parseInt(in.nextLine().trim());
         int[] array = IntStream.range(0, N).map(i -> in.nextInt()).toArray();
 
-        int maxLen = -1;
+        int maxLen = 1;
 
         int last = 0;
         int sign = 0;
