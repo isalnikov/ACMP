@@ -27,6 +27,11 @@ public class NewClass {
         return 2;
     }
 }
+  
+    public int myFunc3() {
+    throw  new IllegalArgumentException();
+    //return 1;
+}
 
 
     public static void main(String[] args) {

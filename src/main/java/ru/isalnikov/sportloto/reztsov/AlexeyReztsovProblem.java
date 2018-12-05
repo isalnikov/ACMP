@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class AlexeyReztsovProblem {
 
     public static Stream reztsov(Stream stream, Stream<Function> a2) {
-        return Stream.empty();
+             return Stream.empty();
     }
     
     public static Stream reztsov(Stream<Integer> stream, Function<Integer,Integer> a1, Function<Integer,Integer> a2) {
