@@ -3,6 +3,7 @@ package ru.isalnikov.bmw;
 import java.util.HashSet;
 import java.util.Set;
 import static java.util.stream.Collectors.toList;
+import java.util.stream.Stream;
 
 /**
  * if we give two strings ? could yoe determine if they share a common substring? 
@@ -20,6 +21,10 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        
+        
+        Stream.of("hello".split("")).forEach(System.out::println);
     }
 
     public static String twoStrings(String s1, String s2) {
