@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *
+ * Монета , генератор get01 get012
  *
  * Наслаждайтесь:
  *
