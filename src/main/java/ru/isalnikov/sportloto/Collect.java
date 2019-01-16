@@ -21,6 +21,8 @@ public class Collect {
                 StringBuilder::append,
                 StringBuilder::append).toString();
         
+        System.out.println(collect);
+        
         
 //          chars.stream().reduce(
 //                StringBuilder::new,
