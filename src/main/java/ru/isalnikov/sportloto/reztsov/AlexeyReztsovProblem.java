@@ -22,6 +22,25 @@ import java.util.stream.Stream;
  * @author i.salnikov
  */
 public class AlexeyReztsovProblem {
+    
+    
+    public static Stream problem2(Stream stream, Stream<Function> functions) {
+        Stream[] holder = new Stream[]{stream};
+        functions.forEachOrdered(f -> {
+            holder[0] = holder[0].map(f);
+        });
+        return holder[0];
+    }
+    
+    public static Stream problem(Stream stream, Stream<Function> functions) {
+        return stream.map(o -> {
+            Object[] a = new Object[]{o};
+            functions.forEachOrdered(f -> {
+                a[0] = f.apply(a[0]);
+            });
+            return a[0];
+        });
+    }
 
     public static Stream<Integer> reztsov(Stream<Integer> stream, Stream<Function> f) {
         
@@ -58,15 +77,16 @@ return Stream.empty();
         
         Stream<Integer> input = Stream.of(1, 3, 2, 5, 4);
         
-        
+                          
          Function<Integer,Integer> add1 = x -> x + 1;
+         Function<Integer,Integer> mul2 = x -> x * 2;
          Comparator<Integer> sort = (a, b) -> a - b;
          
         //Arrays.s
         //ad//d1.andThen(add1)
-        Stream f = Stream.of(add1,sort);
+        Stream f = Stream.of(add1,mul2);
          
-        reztsov(input ,f).forEach(System.out::println);
+        problem2(input ,f).forEach(System.out::println);
         
 //        //    IntStream stream = IntStream.of(1, 3, 2, 5, 4); 
 //         int[] intArray = {1, 3, 2, 5, 4};

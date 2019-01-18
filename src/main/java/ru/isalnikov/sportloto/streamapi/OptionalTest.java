@@ -1,7 +1,6 @@
 package ru.isalnikov.sportloto.streamapi;
 
 import java.util.Optional;
-import ru.isalnikov.annotation.Annotations;
 import ru.isalnikov.annotation.Annotations.Good;
 import ru.isalnikov.annotation.Annotations.Normal;
 import ru.isalnikov.annotation.Annotations.Ugly;
