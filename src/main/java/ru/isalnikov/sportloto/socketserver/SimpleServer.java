@@ -9,6 +9,10 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static ru.isalnikov.sportloto.util.UtilException.uncheck;
 
 /**
  * run $telnet localhost 8080
@@ -22,8 +26,8 @@ public class SimpleServer {
     public static void main(String[] args) throws IOException {
         ServerSocket ss = new ServerSocket(8080);
         ExecutorService service = Executors.newCachedThreadPool();
-        
-        System.out.println("SimpleServer start");
+
+        System.out.println("SimpleServer start...");
         while (true) {
             Socket s = ss.accept();
             service.execute(() -> {
@@ -31,11 +35,15 @@ public class SimpleServer {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     OutputStream out = s.getOutputStream();
-                    in.lines().forEach((line -> {
+                    in.lines().forEach(line -> {
 
-                        out.write(("Echo : " + line + "\n").getBytes());
+                        try {
+                            out.write(("Echo : " + line + "\n").getBytes());
+                        } catch (IOException ex) {
+                            Logger.getLogger(SimpleServer.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
-                    }));
+                    });
                     s.close();
 
                 } catch (IOException e) {
@@ -47,7 +55,5 @@ public class SimpleServer {
         }
 
     }
-
-
 
 }
