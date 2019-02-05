@@ -12,24 +12,28 @@ public class FillArray {
     public static void main(String[] args) {
 
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        List<List<Integer>> bets = new ArrayList<>();
 
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 1; i < 21; i++) {
-            list.add(i);
-        }
-        while (bets.size() != 4) {
-            Collections.shuffle(list, random);
+        for (int k = 0; k < 10; k++) {
 
-            List<Integer> lst = list.stream().limit(4).collect(toList());
-            if (check(lst)) {
-                bets.add(lst);
-                list.removeAll(lst);
+            List<List<Integer>> bets = new ArrayList<>();
+
+            ArrayList<Integer> list = new ArrayList<>();
+            for (int i = 1; i < 21; i++) {
+                list.add(i);
+            }
+            while (bets.size() != 4) {
+                Collections.shuffle(list, random);
+
+                List<Integer> lst = list.stream().limit(4).collect(toList());
+                if (check(lst)) {
+                    bets.add(lst.stream().sorted().collect(toList()));
+                    list.removeAll(lst);
+                }
+
             }
 
+            System.out.println(bets);
         }
-
-        System.out.println(bets);
 
     }
 
