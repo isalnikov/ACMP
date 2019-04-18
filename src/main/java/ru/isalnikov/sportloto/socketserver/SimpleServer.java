@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static ru.isalnikov.sportloto.util.UtilException.rethrowConsumer;
 import static ru.isalnikov.sportloto.util.UtilException.uncheck;
 
 /**
@@ -35,8 +36,8 @@ public class SimpleServer {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     OutputStream out = s.getOutputStream();
-                    in.lines().forEach(line -> {
-
+                    in.lines().forEach(
+                       line -> {
                         try {
                             out.write(("Echo : " + line + "\n").getBytes());
                         } catch (IOException ex) {

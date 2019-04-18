@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 
 public class UtilException {
+
     @FunctionalInterface
     public interface Consumer_WithExceptions<T> {
         void accept(T t) throws Exception;
@@ -46,14 +47,14 @@ public class UtilException {
             catch (Exception exception) { throwAsUnchecked(exception); return null; }
         };
     }
-
+    
     public static void uncheck(Runnable_WithExceptions t)
     {
         try { t.accept(); }
         catch (Exception exception) { throwAsUnchecked(exception); }
     }
-
-    public static <R> R uncheck(Supplier_WithExceptions<R> supplier)
+    
+      public static <R> R uncheck(Supplier_WithExceptions<R> supplier)
     {
         try { return supplier.get(); }
         catch (Exception exception) { throwAsUnchecked(exception); return null; }
@@ -63,7 +64,7 @@ public class UtilException {
         try { return function.apply(t); }
         catch (Exception exception) { throwAsUnchecked(exception); return null; }
     }
-
+    
     @SuppressWarnings ("unchecked")
     private static <E extends Throwable> void throwAsUnchecked(Exception exception) throws E { throw (E)exception; }
 }
