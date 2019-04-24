@@ -10,17 +10,17 @@ import ru.isalnikov.acmp.base.BaseTest;
 
 public class MainTest extends BaseTest {
 
-    @Test
-    public void test() {
-        List<Integer> list = primeNumbersTill(10);
-        String st = primeNumbersTill(list);
-        assertEquals("2357", st);
-
-        // Количество цифр в простых числах от 2 до 20219 - 10004. 
-        list = primeNumbersTill(20219);
-        st = primeNumbersTill(list);
-        assertEquals(10004, st.length());
-    }
+//    @Test
+//    public void test() {
+//        List<Integer> list = primeNumbersTill(10);
+//        String st = primeNumbersTill(list);
+//        assertEquals("2357", st);
+//
+//        // Количество цифр в простых числах от 2 до 20219 - 10004. 
+//        list = primeNumbersTill(20219);
+//        st = primeNumbersTill(list);
+//        assertEquals(10004, st.length());
+//    }
 
     @Test
     public void test1() {
