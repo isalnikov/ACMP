@@ -54,7 +54,7 @@ public class UtilException {
         catch (Exception exception) { throwAsUnchecked(exception); }
     }
     
-      public static <R> R uncheck(Supplier_WithExceptions<R> supplier)
+    public static <R> R uncheck(Supplier_WithExceptions<R> supplier)
     {
         try { return supplier.get(); }
         catch (Exception exception) { throwAsUnchecked(exception); return null; }
