@@ -13,9 +13,6 @@ public class Circle3Points2x {
 
     private static Random random = new Random();
 
-    private static double randomAngle() {
-        return random.nextDouble();
-    }
 
     private static boolean generateResult() {
         double[] points = new double[]{
