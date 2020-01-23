@@ -20,7 +20,7 @@ public class Circle3Points2x {
             random.nextDouble()
           
         };
-        return points[0]<0.5 && points[1]>0.5 ||  points[0]>0.5 && points[1]<0.5;
+         return points[0]<0.5 && points[1]<0.5; 
     }
 
     public static void main(String[] args) {
