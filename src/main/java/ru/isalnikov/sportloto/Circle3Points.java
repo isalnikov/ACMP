@@ -33,7 +33,7 @@ public class Circle3Points {
     }
 
     public static void main(String[] args) {
-        int total = 10000000;
+        int total = 10_000_000;
         int success = 0;
 
         for (int i = 0; i < total; i++) {
