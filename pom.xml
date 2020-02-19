@@ -62,6 +62,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jmh.version>1.21</jmh.version>
+        <maven.test.skip>true</maven.test.skip>
+        <skipTests>true</skipTests>
     </properties>
     
     <build>

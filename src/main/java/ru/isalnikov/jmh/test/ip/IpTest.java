@@ -2,6 +2,13 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+
+Benchmark         Mode  Cnt    Score    Error  Units
+IpTest.ipToLong   avgt   10  881,229 ± 12,035  ns/op
+IpTest.ipToLong2  avgt   10  466,520 ± 22,463  ns/op
+IpTest.longToIp   avgt   10  246,252 ± 57,698  ns/op
+IpTest.longToIp2  avgt   10  346,085 ± 28,556  ns/op
+
  */
 package ru.isalnikov.jmh.test.ip;
 
