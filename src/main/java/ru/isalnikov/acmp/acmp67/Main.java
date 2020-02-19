@@ -1,12 +1,14 @@
 package ru.isalnikov.acmp.acmp67;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import static java.util.stream.Collectors.toList;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov 
  *
  * Маска подсетей (Время: 0,4 сек. Память: 16 Мб Сложность: 33%) Рассмотрим
  * компьютерную сеть с настроенной TCP/IP маршрутизацией. Будем рассматривать
@@ -55,7 +57,7 @@ public class Main {
 
     }
 
-    public long ipToLong2(String ipAddress) {
+    public static long ipToLong2(String ipAddress) {
 
         long result = 0;
 
@@ -85,8 +87,36 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(mask("00000000.00000000.00000000.00000000"));
-        System.out.println(mask("11111111.11111111.11111111.11111111"));
+        try (Scanner in = new Scanner(System.in);
+                PrintWriter out = new PrintWriter(System.out)) {
+
+            solve(in, out);
+        }
     }
 
+    private static void solve(Scanner in, PrintWriter out) {
+        int n = Integer.parseInt(in.nextLine());
+        String[] arr = new String[n];
+        long[] masks = new long[n];
+        for (int i = 0; i < n; i++) {
+            String ip = in.nextLine();
+            masks[i] = ipToLong2(ip);
+
+        }
+        int m = Integer.parseInt(in.nextLine());
+        for (int i = 0; i < m; i++) {
+            String[] ips = in.nextLine().split(" ");
+            long ip1 = ipToLong2(ips[0]);
+            long ip2 = ipToLong2(ips[1]);
+            int cnt = 0;
+            for (long mask : masks) {
+                if ((ip1 & mask) == (ip2 & mask)) {
+                    cnt++;
+                }
+            }
+            System.err.println(cnt);
+            out.println(cnt);
+        }
+        out.flush();
+    }
 }

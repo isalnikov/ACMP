@@ -47,21 +47,21 @@ public class Main {
  
     public static void main(String[] args) {
 
-        try (Scanner in = new Scanner(System.in);
-                PrintWriter out = new PrintWriter(System.out)) {
+            try (Scanner in = new Scanner(System.in);
+                    PrintWriter out = new PrintWriter(System.out)) {
 
-            solve(in, out);
-        }
+                solve(in, out);
+            }
     }
 
-    private static void solve(Scanner in, PrintWriter out) {
-        int n =in.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = in.nextInt();
-            
-        }
-       
+        private static void solve(Scanner in, PrintWriter out) {
+            int n =in.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = in.nextInt();
+
+            }
+
         
         String st = primeNumbersTill(25000);
         // [2] 35 [7] 111317 [1] 9232931374143475
