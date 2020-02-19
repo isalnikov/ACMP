@@ -26,7 +26,17 @@ public class MainTest extends BaseTest {
 
         assertEquals("1\n"
                 + "1\n"
-                + "0", outContent.toString());
+                + "0\n", outContent.toString());
+
+    }
+
+    @Test
+    public void test2() {
+
+        inContent = new ByteArrayInputStream(data.getBytes());
+        System.setIn(inContent);
+
+        Main.main(null);
 
     }
 
