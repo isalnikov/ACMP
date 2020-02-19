@@ -3,6 +3,10 @@ package ru.isalnikov.acmp.acmp67;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import org.junit.Test;
 
 import ru.isalnikov.acmp.base.BaseTest;
@@ -22,7 +26,7 @@ public class MainTest extends BaseTest {
         inContent = new ByteArrayInputStream(data.getBytes());
         System.setIn(inContent);
 
-        Main.main(null);
+        Main1.main(null);
 
         assertEquals("1\n"
                 + "1\n"
@@ -31,12 +35,13 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void test2() {
+    public void test2() throws FileNotFoundException {
 
-        inContent = new ByteArrayInputStream(data.getBytes());
-        System.setIn(inContent);
-
-        Main.main(null);
+        Scanner sc = new Scanner(new File("/home/igor/NetBeansProjects/example/ACMP/src/test/resources/test67.txt"));
+        int a = sc.nextInt();
+        PrintWriter pw = new PrintWriter(new File("/home/igor/NetBeansProjects/example/ACMP/src/test/resources/output67.txt"));
+        pw.print(a + 1);
+        pw.close();
 
     }
 

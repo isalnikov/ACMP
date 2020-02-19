@@ -34,7 +34,7 @@ import java.util.Scanner;
  * противном случае.
  *
  */
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in);
@@ -54,7 +54,6 @@ public class Main {
             }
         } else {
             if ("Home".equals(location)) {
-
                 out.print("Yes");
             }
             out.flush();
