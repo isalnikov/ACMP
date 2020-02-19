@@ -1,5 +1,9 @@
 package ru.isalnikov.acmp.acmp67;
 
+import java.util.Arrays;
+import java.util.List;
+import static java.util.stream.Collectors.toList;
+
 /**
  *
  * @author Igor Salnikov igor.salnikov@stoloto.ru
@@ -23,14 +27,27 @@ package ru.isalnikov.acmp.acmp67;
  */
 public class Main {
     
+    
+    //ip = 3232235778
+    public String longToIp(long ip) {
+
+        return ((ip >> 24) & 0xFF) + "."
+                + ((ip >> 16) & 0xFF) + "."
+                + ((ip >> 8) & 0xFF) + "."
+                + (ip & 0xFF);
+
+    }
+    
     //Ограничение N (0 <= N <= 32) ( от 00000000.00000000.00000000.00000000 до 11111111.11111111.11111111.11111111)
     public static long mask (final String mask){
-        mask.split(".");
+        List<Integer> list = Arrays.stream(mask.split("\\.")).map(Integer::parseInt).collect(toList());
+        System.out.println(list);
         return 0;
     }
     
     public static void main(String[] args) {
-        
+        System.out.println(mask("00000000.00000000.00000000.00000000"));
+        System.out.println(mask("11111111.11111111.11111111.11111111"));
     }
     
 }
