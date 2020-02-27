@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class TaskScheduleServiceTest {
     
