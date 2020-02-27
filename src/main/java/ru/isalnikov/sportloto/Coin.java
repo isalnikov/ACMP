@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class Coin {
 

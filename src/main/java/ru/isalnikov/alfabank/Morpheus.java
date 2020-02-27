@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * 
  * ключ : ПЛАТОН
  * 
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class Morpheus {
     public static void main(String[] args) {

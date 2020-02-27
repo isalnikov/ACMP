@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 /**
  *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
+ * @author Igor Salnikov  <isalnikov.com>
  */
 import java.util.Arrays;
 import java.util.Comparator;

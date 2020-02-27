@@ -2,7 +2,7 @@ package ru.isalnikov.sportloto.streamapi;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class Regular {
     

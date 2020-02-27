@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
+ * @author Igor Salnikov  <isalnikov.com>
  */
 public class ListMapToMapList {
     public static void main(String[] args) {

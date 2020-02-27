@@ -2,7 +2,7 @@ package ru.isalnikov.sportloto.pazzle;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class NewMain {
 

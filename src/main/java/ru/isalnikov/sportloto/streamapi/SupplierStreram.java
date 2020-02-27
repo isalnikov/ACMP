@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 /**
  * конкатенация всех комбинаций
  *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
+ * @author Igor Salnikov  <isalnikov.com>
  */
 public class SupplierStreram {
 

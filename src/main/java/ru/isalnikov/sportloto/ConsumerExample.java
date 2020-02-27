@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class ConsumerExample {
 

@@ -19,7 +19,7 @@ import ru.isalnikov.sportloto.Coin;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 @Warmup(iterations = 3)
 @Measurement(iterations = 10)

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  The  words "be" and "cat" do not share a substring/
  * Ready ti work out the answer ?
  * 
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class NewMain {
 

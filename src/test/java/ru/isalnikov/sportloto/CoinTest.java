@@ -9,7 +9,7 @@ import static ru.isalnikov.sportloto.Coin.sumBitsCounter;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class CoinTest {
 

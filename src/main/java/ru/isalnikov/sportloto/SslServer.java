@@ -12,7 +12,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class SslServer {
 

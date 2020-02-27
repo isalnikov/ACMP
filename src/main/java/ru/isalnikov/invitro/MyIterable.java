@@ -2,7 +2,7 @@ package ru.isalnikov.invitro;
 
 /**
  *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
+ * @author Igor Salnikov  <isalnikov.com>
  */
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

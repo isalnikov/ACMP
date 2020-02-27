@@ -2,7 +2,7 @@ package ru.isalnikov.sportloto.server;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 import java.net.ServerSocket;
 import java.net.Socket;

@@ -2,7 +2,7 @@ package ru.isalnikov.sportloto.reztsov;
 
 /**
  *
- *  @author Igor Salnikov igor.salnikov@stoloto.ru
+ *  @author Igor Salnikov isalnikov.com
  * 
  *  В коризне 1 лежит 10 шаров (3 черных) 
  *  В коризне 2 лежит 10 шаров (5 черных) 

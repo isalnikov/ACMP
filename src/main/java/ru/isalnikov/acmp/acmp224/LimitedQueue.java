@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 
 /**
  *
- * @author Igor Salnikov  <igor.salnikov@stoloto.ru>
+ * @author Igor Salnikov  <isalnikov.com>
  */
 public class LimitedQueue  extends PriorityQueue<Integer>{
    private final int limit;

@@ -20,7 +20,7 @@ import static ru.isalnikov.sportloto.util.UtilException.uncheck;
  *
  * https://www.youtube.com/watch?v=Yi_m6ju4MTQ
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class SimpleServer {
 

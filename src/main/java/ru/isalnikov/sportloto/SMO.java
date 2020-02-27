@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  *
  * Кол-во терминалов - пропускная способность TPS cистемы и кол -во билетов
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class SMO {
 

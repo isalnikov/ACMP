@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class Dice {
 

@@ -7,7 +7,7 @@ import ru.isalnikov.acmp.base.BaseTest;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class MainTest extends BaseTest {
 

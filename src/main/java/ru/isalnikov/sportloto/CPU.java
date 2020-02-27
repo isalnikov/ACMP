@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * https://github.com/wizzardo/highloadcup/blob/master/src/main/java/ru/highloadcup/App.java
  * 
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class CPU {
 

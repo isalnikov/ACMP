@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class StreamRemove {
 

@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
  * Дан массив с целыми числами, среди которых есть нули. Сдвинуть все нули в
  * начало массива. ?
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class ZeroArray {
 

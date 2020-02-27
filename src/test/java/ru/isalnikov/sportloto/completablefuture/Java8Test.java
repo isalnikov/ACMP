@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 @Log4j2
 public class Java8Test {

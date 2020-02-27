@@ -8,7 +8,7 @@ import org.spark_project.guava.collect.Lists;
 
 /**
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class StringSort {
 

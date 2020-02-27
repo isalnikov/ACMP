@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * http://www.baeldung.com/java-filter-stream-of-optional
  *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
+ * @author Igor Salnikov isalnikov.com
  */
 public class OptionalTest {
 
