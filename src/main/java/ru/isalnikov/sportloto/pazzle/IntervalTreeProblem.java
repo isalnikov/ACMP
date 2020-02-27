@@ -104,10 +104,10 @@ class IntervalNode<Type> {
         long median = getMedian(endpoints);
         center = median;
 
-        List<Interval<Type>> left = new ArrayList<Interval<Type>>();
-        List<Interval<Type>> right = new ArrayList<Interval<Type>>();
+        List<Interval<Type>> left = new ArrayList<>();
+        List<Interval<Type>> right = new ArrayList<>();
 
-        for (Interval<Type> interval : intervalList) {
+        intervalList.forEach((interval) -> {
             if (interval.getEnd() < median) {
                 left.add(interval);
             } else if (interval.getStart() > median) {
@@ -115,30 +115,30 @@ class IntervalNode<Type> {
             } else {
                 List<Interval<Type>> posting = intervals.get(interval);
                 if (posting == null) {
-                    posting = new ArrayList<Interval<Type>>();
+                    posting = new ArrayList<>();
                     intervals.put(interval, posting);
                 }
                 posting.add(interval);
             }
-        }
+        });
 
         if (left.size() > 0) {
-            leftNode = new IntervalNode<Type>(left);
+            leftNode = new IntervalNode<>(left);
         }
         if (right.size() > 0) {
-            rightNode = new IntervalNode<Type>(right);
+            rightNode = new IntervalNode<>(right);
         }
     }
 
     public List<Interval<Type>> stab(long time) {
-        List<Interval<Type>> result = new ArrayList<Interval<Type>>();
+        List<Interval<Type>> result = new ArrayList<>();
 
         for (Entry<Interval<Type>, List<Interval<Type>>> entry : intervals
                 .entrySet()) {
             if (entry.getKey().contains(time)) {
-                for (Interval<Type> interval : entry.getValue()) {
+                entry.getValue().forEach((interval) -> {
                     result.add(interval);
-                }
+                });
             } else if (entry.getKey().getStart() > time) {
                 break;
             }
@@ -153,14 +153,14 @@ class IntervalNode<Type> {
     }
 
     public List<Interval<Type>> query(Interval<?> target) {
-        List<Interval<Type>> result = new ArrayList<Interval<Type>>();
+        List<Interval<Type>> result = new ArrayList<>();
 
         for (Entry<Interval<Type>, List<Interval<Type>>> entry : intervals
                 .entrySet()) {
             if (entry.getKey().intersects(target)) {
-                for (Interval<Type> interval : entry.getValue()) {
+                entry.getValue().forEach((interval) -> {
                     result.add(interval);
-                }
+                });
             } else if (entry.getKey().getStart() > target.getEnd()) {
                 break;
             }
@@ -247,8 +247,8 @@ class IntervalTree<Type> {
     }
 
     public IntervalTree(List<Interval<Type>> intervalList) {
-        this.head = new IntervalNode<Type>(intervalList);
-        this.intervalList = new ArrayList<Interval<Type>>();
+        this.head = new IntervalNode<>(intervalList);
+        this.intervalList = new ArrayList<>();
         this.intervalList.addAll(intervalList);
         this.inSync = true;
         this.size = intervalList.size();
@@ -256,10 +256,10 @@ class IntervalTree<Type> {
 
     public List<Type> get(long time) {
         List<Interval<Type>> intervals = getIntervals(time);
-        List<Type> result = new ArrayList<Type>();
-        for (Interval<Type> interval : intervals) {
+        List<Type> result = new ArrayList<>();
+        intervals.forEach((interval) -> {
             result.add(interval.getData());
-        }
+        });
         return result;
     }
 
