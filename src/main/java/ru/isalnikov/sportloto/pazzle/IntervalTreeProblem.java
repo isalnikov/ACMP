@@ -14,7 +14,7 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import lombok.extern.log4j.Log4j2;
+
 
 class Interval<Type> implements Comparable<Interval<Type>> {
 
@@ -333,9 +333,15 @@ class IntervalTree<Type> {
     }
 }
 
-@Log4j2
+
+
+
 public class IntervalTreeProblem {
 
+    public static void info(String text){
+        System.out.println(text);
+    }
+    
     public static void main(String args[]) {
         IntervalTree<Integer> it = new IntervalTree<>();
 
@@ -349,24 +355,24 @@ public class IntervalTreeProblem {
         List<Integer> result3 = it.get(29L);
         List<Integer> result4 = it.get(5L, 15L);
 
-        log.info("\nIntervals that contain 5L:");
+        info("\nIntervals that contain 5L:");
         result1.forEach((r) -> {
-            log.info(r + " ");
+            info(r + " ");
         });
 
-        log.info("\nIntervals that contain 10L:");
+        info("\nIntervals that contain 10L:");
         result2.forEach((r) -> {
-            log.info(r + " ");
+             info(r + " ");
         });
 
-        log.info("\nIntervals that contain 29L:");
+         info("\nIntervals that contain 29L:");
         result3.forEach((r) -> {
-            log.info(r + " ");
+             info(r + " ");
         });
 
-        log.info("\nIntervals that intersect (5L,15L):");
+         info("\nIntervals that intersect (5L,15L):");
         result4.forEach((r) -> {
-            log.info(r + " ");
+             info(r + " ");
         });
     }
 }

@@ -1,6 +1,6 @@
 package ru.isalnikov.iteco;
 
-import java.util.Collection;
+
 import java.util.List;
 
 interface PersonService {

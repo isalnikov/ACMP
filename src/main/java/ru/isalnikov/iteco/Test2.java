@@ -10,7 +10,7 @@ public class Test2 {
 
     public static void main(String[] args) {
         System.out.println(str);
-        change(str);  // соиспользование  - нет присовения ( созадется копия ссылки) 
+        change(str);  // Ответ — соиспользование  - нет присвоения ( создается копия ссылки) 
         System.out.println(str);
     }
 }

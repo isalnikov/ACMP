@@ -17,13 +17,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import static java.util.stream.Collectors.toList;
-import lombok.extern.log4j.Log4j2;
-
 /**
  *
  * @author igor
  */
-@Log4j2
+
 public class Parallel420BetsGenerator {
 
     public static final Path path = Paths.get("C:\\Users\\i.salnikov\\Documents\\4_20_35_190");

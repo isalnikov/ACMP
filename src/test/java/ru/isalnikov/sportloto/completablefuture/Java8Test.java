@@ -1,9 +1,7 @@
 package ru.isalnikov.sportloto.completablefuture;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
@@ -13,10 +11,8 @@ import java.util.function.Consumer;
  *
  * @author Igor Salnikov isalnikov.com
  */
-@Log4j2
 public class Java8Test {
     
-    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Java8Test.class);
 
     @FunctionalInterface
     interface Converter<F, T> {
@@ -106,7 +102,7 @@ public class Java8Test {
         
         final boolean done = es.awaitTermination(1, TimeUnit.MINUTES);
        
-       log.info("Все ли письма были отправлены? {}", done);
+        System.out.printf("Все ли письма были отправлены? {%s}\n", done);
 
     }
     

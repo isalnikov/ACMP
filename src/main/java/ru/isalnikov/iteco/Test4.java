@@ -1,9 +1,6 @@
 package ru.isalnikov.iteco;
 
-/**
- *
- * @author Igor Salnikov igor.salnikov@stoloto.ru
- */
+
 public class Test4 {
 
     public String join(String[] args) {
